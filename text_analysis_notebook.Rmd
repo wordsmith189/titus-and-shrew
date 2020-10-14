@@ -13,6 +13,36 @@ p_load(rio, tidyverse, tidytext, knitr, flextable,
        textreadr, gutenbergr, janitor)
 ```
 
+## Digital text analysis: a look at the toolbox 
+
+Having read [the NYT piece](https://www.nytimes.com/2020/10/12/style/self-care/social-media-.html) about social media text analysis, and perhaps from your own life in this digital world of ours!!, you have at least head about some of the methods that a "computational sociolinguist" or a "digital humanist" might apply to text. 
+
+### Sentiment analysis
+
+#### "Positive" versus "negative" words
+
+![Sentiment analysis: n pos v. n neg per text.](sa1.png)
+
+![Sentiment analysis: comparing pos:neg ratios.](sa2.png)
+
+![Sentiment analysis: split each text into 100 slices, then track sentiment curve.](sa3.png)
+
+![Sentiment analysis: same as above, but with act boundaries marked.](sa4.png)
+
+#### Tag for more than 2 emotions
+
+![Sentiment analysis: pos, neg, and 8 other sentiment categories.](sa5.png)
+
+
+
+### Tag for parts of speech
+
+![Penn Treebank POS tagset](pos_tagset.png)
+
+### Tag for semantic classes 
+
+![Universal semantic tagset](semantic_tagset.png)
+
 ## Start by loading our data
 
 First we'll get an inventory of all the .DOCX files in our project directory.
@@ -43,4 +73,44 @@ f %>%
                 full_width = F, 
                 position = "left") 
 ```
+
+## Narrowing down our interest
+
+I have just received the latest notes from class: the interest seems to be in the difference between verse and prose *crossed with* an interest in character. I interpret this to mean that there are characters that appear both in verse and in prose sections, and we <mark>want to know how the language associated with each character differs from verse to prose.</mark>
+
+In the text samples I have, character speech is not marked. We might be better off if we pull *Taming of the Shrew* from www.gutenberg.org.
+
+Luckily there is an R module that interfaces with the Gutenberg archives. It is called `gutenbergr`. I will pull the whole text from there. 
+
+```{r}
+shakespeare <- 
+  gutenberg_works(author == "Shakespeare, William") 
+
+shakespeare                    %>% 
+  mutate(entry = row_number()) %>% 
+  select(entry, title)  %>% 
+  kbl() %>% 
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F, 
+                position = "left") 
+```
+
+So our text is there and available, at index no. 10. 
+
+```{r}
+IDs <-  shakespeare[c(10),]$gutenberg_id
+
+shakespeare %>% 
+  filter(gutenberg_id %in% IDs) %>% 
+  select(gutenberg_id, title)
+```
+
+Let's download the play and store it in an R object. 
+
+```{r}
+plays <- gutenberg_download(IDs, meta_fields = "title")
+
+plays %>% as_tibble()
+```
+
 
