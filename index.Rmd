@@ -1,15 +1,28 @@
 ---
-title: "*Titus*, *Shrew*, and electronic text analysis"
-author: Lars Hinrichs
-date: Oct-14-2020
-output: html_document
+title: "Titus and Shrew"
+description: |
+  For my guest lecture in D. Bruster's Titus and Shrew class.
+author:
+  - name: "Lars Hinrichs"
+    url: https://larshinrichs.site
+    affiliation: "UT Austin"
+    affiliation_url: https://liberalarts.utexas.edu/english
+date: "`r Sys.Date()`"
+output: distill::distill_article
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE,
+                      cache = TRUE)
 ```
 
 ## What you will find here
 
-- [Rmd notebook file](text_analysis_notebook.nb.html) with script from my guest lecture
-- A [nice html view of the Rmd hotebook](text_analysis_notebook.html)
+- the [Rmd notebook file](text_analysis_notebook.nb.html) with script from my guest lecture
+- a [nice html view of the Rmd hotebook](text_analysis_notebook.html)
+- [data file 1](Prose and Verse from Shrew.docx)
+- [data file 2](prose and verse csv 500 words.docx)
+
+
+
+
