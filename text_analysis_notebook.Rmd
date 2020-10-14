@@ -134,9 +134,13 @@ sentiments %>%
 With my well-trained eye, I notice that "character names designating who's speaking" are all set in all-caps. Given this material property, we can insert a column into the data that states, for each word, who is speaking it. 
 
 ```{r}
+sentiments <- 
+  sentiments %>% 
+  mutate(speaker = "nobody")
+
 for (i in (1:nrow(sentiments))){
   myword = sentiments[i,] %>% pull(word)
-  if (myword == toupper(myword)){
+  if (myword == toupper(myword) & nchar(myword) > 1){
     speaker = myword
   }
   sentiments$speaker[i] = speaker
@@ -144,7 +148,8 @@ for (i in (1:nrow(sentiments))){
 
 sentiments %>% 
   slice(200:400) %>% 
-  kable()
+  kbl() %>% 
+  kable_styling()
 
 
 ```
