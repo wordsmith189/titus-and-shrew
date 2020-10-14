@@ -186,14 +186,108 @@ play_with_speaker %>%
   kable_paper(full_width = FALSE)
 ```
 
+For later use, let's retain a list of the speakers who have significant enough amounts of speech. Let's set the cutoff even a bit higher, at 400 words. 
+
+```{r}
+sig_speakers <- 
+  play_with_speaker %>% 
+  count(speaker) %>% 
+  arrange(desc(n)) %>% 
+  filter(n >400) %>% 
+  pull(speaker)
+sig_speakers
+```
+
 
 
 ```{r}
 play_with_speaker %>% 
-  slice(200:400) %>% 
+  slice(340:400) %>% 
   kbl(position = "left") %>% 
   kable_styling(full_width = F)
 ```
 
+## Tag for sentiment 
+
+For now, we'll just tag for pos. and neg. sentiment words
+
+```{r}
+sentiment <- 
+  play_with_speaker %>% 
+  mutate(word = tolower(word)) %>% 
+  anti_join(stop_words) %>%          
+  inner_join(get_sentiments("bing")) %>% 
+  select(speaker, word, sentiment)
+
+sentiment %>% 
+  slice(300:330) %>% 
+  kbl(position = "left") %>% 
+  kable_paper(full_width = F)
+
+```
+
+With this data available, we can now plot the sentiment-per-speaker.
+
+First we'll make a second dataset that is "wider": it has one row per speaker and it summarizes `n_neg, n_pos, n_total,` and `neg_ratio.` 
+
+```{r}
+sentiment_wide <- 
+  sentiment %>% 
+  filter(speaker %in% sig_speakers) %>% 
+  count(speaker, sentiment) %>% 
+  pivot_wider(
+    names_from = sentiment,
+    values_from = n
+  ) %>% 
+  mutate(n_total = negative + positive,
+         neg_ratio = negative/positive) %>% 
+  rename(n_neg = negative,
+         n_pos = positive)
+```
+
+Some of this info will be useful to have in the main dataset `sentiment`. Therefore we'll `left_join()` the two.
+
+```{r}
+sentiment %>% 
+  filter(speaker %in% sig_speakers) %>% 
+  count(speaker, sentiment) %>% 
+  left_join(select(sentiment_wide, speaker, n_total)) %>% 
+  #---start plot code---#
+  ggplot(aes(x = sentiment,
+             y = n/n_total,
+             fill = speaker)) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  geom_bar(stat = "identity",
+           position = "dodge") +
+  scale_fill_viridis_d() +
+  facet_wrap(~speaker) + 
+  labs(y="sentiment words scored") +
+  theme_classic(base_family = "Roboto Condensed") +
+  theme(legend.position = "none")
+```
+
+Let's now plot just one bar for each speaker, the neg:pos ratio (or `neg_ratio`, as I will call it). So the highest value will be for the character with the most negative words.
+
+```{r fig.cap="That Sly character must be miserable to be around.", fig.width=7, fig.height=7}
+sentiment_wide %>% 
+  #---start plot code---#
+  ggplot(aes(x = reorder(speaker, neg_ratio),
+             y = neg_ratio,
+             fill = -neg_ratio)) +
+   geom_hline(yintercept = 1,
+             colour="black", 
+             linetype="dashed") +
+  geom_col(alpha=0.8) +
+  scale_fill_viridis_b() +
+  labs(
+    title="Sentiment ratio by character",
+    subtitle="Values > 1 indicate greater negative counts",
+    caption="The Taming of the Shrew",
+    y="negative vs. positive words",
+       x=NULL) +
+  coord_flip() +
+  theme_classic(base_family = "Roboto Condensed") +
+  theme(legend.position = "none")
+```
 
 
