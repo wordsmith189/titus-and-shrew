@@ -1,0 +1,44 @@
+---
+title: "Text Analysis Notebook"
+author: Lars Hinrichs
+date: 14-Oct-2020
+output: html_notebook
+---
+
+```{r setup}
+if (!require(pacman)) install.packages("pacman")
+library(pacman)
+p_load(rio, tidyverse, tidytext, knitr, flextable,
+       kableExtra,
+       textreadr, gutenbergr, janitor)
+```
+
+## Start by loading our data
+
+First we'll get an inventory of all the .DOCX files in our project directory.
+
+```{r}
+(textfiles <- list.files(pattern = ".docx"))
+```
+
+The second file has more formatting and may, for the time being, be more useful. We'll read it in. Here is the top of its content.
+
+```{r}
+f <- read_docx(textfiles[2])
+f %>% head(10)
+```
+
+Here it is, converted to tabular format.
+
+```{r}
+f <- 
+  f %>% 
+  enframe() %>% 
+  select(line = 2) %>% 
+  mutate(file = textfiles[2])
+f %>% 
+  head(10) %>% 
+  kbl() %>% 
+  kable_paper(full_width = F)
+```
+
