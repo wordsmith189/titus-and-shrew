@@ -2,7 +2,7 @@
 title: "*Titus*, *Shrew*, and electronic text analysis"
 author: Lars Hinrichs
 date: Oct-14-2020
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
