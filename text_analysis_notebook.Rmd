@@ -105,12 +105,45 @@ shakespeare %>%
   select(gutenberg_id, title)
 ```
 
-Let's download the play and store it in an R object. 
+Let's download the play and store it in an R object. I will call it `plays` (plural in case we add more texts or something.)
 
 ```{r}
 plays <- gutenberg_download(IDs, meta_fields = "title")
 
 plays %>% as_tibble()
 ```
+
+I'll convert the data to one-word-per row now. It's the format we need for any of these analyses.
+
+```{r}
+sentiments <- plays %>%
+  #group_by(title) %>%
+  mutate(line = row_number()) %>% 
+  unnest_tokens(word, text,
+                to_lower = F) 
+
+sentiments %>% 
+  slice(150:190) %>% 
+  kbl() %>% 
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F, 
+                position = "left") 
+```
+
+
+With my well-trained eye, I notice that "character names designating who's speaking" are all set in all-caps. Given this material property, we can insert a column into the data that states, for each word, who is speaking it. 
+
+```{r}
+for (i in (1:nrow(sentiments))){
+  myword = sentiments[i,] %>% pull(word)
+  if (myword == toupper(myword)){
+    speaker = myword
+  }
+  sentiments$speaker[i] = speaker
+}
+
+
+```
+
 
 

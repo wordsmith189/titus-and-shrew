@@ -2018,9 +2018,8 @@ p_load(rio, tidyverse, tidytext, knitr, flextable,
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKHRleHRmaWxlcyA8LSBsaXN0LmZpbGVzKHBhdHRlcm4gPSBcIi5kb2N4XCIpKVxuYGBgIn0= -->
 <pre class="r"><code>(textfiles &lt;- list.files(pattern = &quot;.docx&quot;))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicHJvc2UgYW5kIHZlcnNlIGNzdiA1MDAgd29yZHMuZG9jeFwiXG5bMl0gXCJQcm9zZSBhbmQgVmVyc2UgZnJvbSBTaHJldy5kb2N4XCIgICBcbiJ9 -->
-<pre><code>[1] &quot;prose and verse csv 500 words.docx&quot;
-[2] &quot;Prose and Verse from Shrew.docx&quot;   </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicHJvc2UgYW5kIHZlcnNlIGNzdiA1MDAgd29yZHMuZG9jeFwiIFwiUHJvc2UgYW5kIFZlcnNlIGZyb20gU2hyZXcuZG9jeFwiICAgXG4ifQ== -->
+<pre><code>[1] &quot;prose and verse csv 500 words.docx&quot; &quot;Prose and Verse from Shrew.docx&quot;   </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2517,7 +2516,7 @@ shakespeare %&gt;%
 <!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Let’s download the play and store it in an R object.</p>
+<p>Let’s download the play and store it in an R object. I will call it <code>plays</code> (plural in case we add more texts or something.)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxheXMgPC0gZ3V0ZW5iZXJnX2Rvd25sb2FkKElEcywgbWV0YV9maWVsZHMgPSBcInRpdGxlXCIpXG5gYGAifQ== -->
@@ -2539,10 +2538,317 @@ Using mirror http://aleph.gutenberg.org</code></pre>
 <!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>I’ll convert the data to one-word-per row now. It’s the format we need for any of these analyses.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VudGltZW50cyA8LSBwbGF5cyAlPiVcbiAgI2dyb3VwX2J5KHRpdGxlKSAlPiVcbiAgbXV0YXRlKGxpbmUgPSByb3dfbnVtYmVyKCkpICU+JSBcbiAgdW5uZXN0X3Rva2Vucyh3b3JkLCB0ZXh0LFxuICAgICAgICAgICAgICAgIHRvX2xvd2VyID0gRikgXG5cbnNlbnRpbWVudHMgJT4lIFxuICBzbGljZSgxNTA6MTkwKSAlPiUgXG4gIGtibCgpICU+JSBcbiAga2FibGVfc3R5bGluZyhib290c3RyYXBfb3B0aW9ucyA9IFwic3RyaXBlZFwiLCBcbiAgICAgICAgICAgICAgICBmdWxsX3dpZHRoID0gRiwgXG4gICAgICAgICAgICAgICAgcG9zaXRpb24gPSBcImxlZnRcIikgXG5gYGAifQ== -->
+<pre class="r"><code>sentiments &lt;- plays %&gt;%
+  #group_by(title) %&gt;%
+  mutate(line = row_number()) %&gt;% 
+  unnest_tokens(word, text,
+                to_lower = F) 
+
+sentiments %&gt;% 
+  slice(150:190) %&gt;% 
+  kbl() %&gt;% 
+  kable_styling(bootstrap_options = &quot;striped&quot;, 
+                full_width = F, 
+                position = &quot;left&quot;) </code></pre>
+<!-- rnb-source-end -->
+
+<!-- rnb-htmlwidget-begin eyJkZXBlbmRlbmNpZXMiOlt7ImFsbF9maWxlcyI6dHJ1ZSwiYXR0YWNobWVudCI6W10sImhlYWQiOltdLCJtZXRhIjpbXSwibmFtZSI6ImpxdWVyeSIsInBhY2thZ2UiOltdLCJzY3JpcHQiOiJqcXVlcnkubWluLmpzIiwic3JjIjp7ImZpbGUiOiIvVXNlcnMvbGg5ODk2L0xpYnJhcnkvUi80LjAvbGlicmFyeS9ybWFya2Rvd24vcm1kL2gvanF1ZXJ5In0sInN0eWxlc2hlZXQiOltdLCJ2ZXJzaW9uIjoiMS4xMS4zIn0seyJhbGxfZmlsZXMiOnRydWUsImF0dGFjaG1lbnQiOltdLCJoZWFkIjpbXSwibWV0YSI6eyJ2aWV3cG9ydCI6IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xIn0sIm5hbWUiOiJib290c3RyYXAiLCJwYWNrYWdlIjpbXSwic2NyaXB0IjpbImpzL2Jvb3RzdHJhcC5taW4uanMiLCJzaGltL2h0bWw1c2hpdi5taW4uanMiLCJzaGltL3Jlc3BvbmQubWluLmpzIl0sInNyYyI6eyJmaWxlIjoiL1VzZXJzL2xoOTg5Ni9MaWJyYXJ5L1IvNC4wL2xpYnJhcnkvcm1hcmtkb3duL3JtZC9oL2Jvb3RzdHJhcCJ9LCJzdHlsZXNoZWV0IjoiY3NzL2Nvc21vLm1pbi5jc3MiLCJ2ZXJzaW9uIjoiMy4zLjUifSx7ImFsbF9maWxlcyI6dHJ1ZSwiYXR0YWNobWVudCI6W10sImhlYWQiOltdLCJtZXRhIjpbXSwibmFtZSI6ImtlUHJpbnQiLCJwYWNrYWdlIjpbXSwic2NyaXB0Ijoia2VQcmludC5qcyIsInNyYyI6eyJmaWxlIjoiL1VzZXJzL2xoOTg5Ni9MaWJyYXJ5L1IvNC4wL2xpYnJhcnkva2FibGVFeHRyYS9rZVByaW50LTAuMC4xIn0sInN0eWxlc2hlZXQiOltdLCJ2ZXJzaW9uIjoiMC4wLjEifSx7ImFsbF9maWxlcyI6dHJ1ZSwiYXR0YWNobWVudCI6W10sImhlYWQiOltdLCJtZXRhIjpbXSwibmFtZSI6ImxpZ2h0YWJsZSIsInBhY2thZ2UiOltdLCJzY3JpcHQiOltdLCJzcmMiOnsiZmlsZSI6Ii9Vc2Vycy9saDk4OTYvTGlicmFyeS9SLzQuMC9saWJyYXJ5L2thYmxlRXh0cmEvbGlnaHRhYmxlLTAuMC4xIn0sInN0eWxlc2hlZXQiOiJsaWdodGFibGUuY3NzIiwidmVyc2lvbiI6IjAuMC4xIn1dLCJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNoaW55LnRhZy5saXN0Il0sInNpemluZ1BvbGljeSI6W119fQ== -->
+
+<table class="table table-striped" style="width: auto !important; ">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> gutenberg_id </th>
+   <th style="text-align:left;"> title </th>
+   <th style="text-align:right;"> line </th>
+   <th style="text-align:left;"> word </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:left;"> Therefore </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:left;"> paucas </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 69 </td>
+   <td style="text-align:left;"> pallabris </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 69 </td>
+   <td style="text-align:left;"> let </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 69 </td>
+   <td style="text-align:left;"> the </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 69 </td>
+   <td style="text-align:left;"> world </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 69 </td>
+   <td style="text-align:left;"> slide </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 69 </td>
+   <td style="text-align:left;"> Sessa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:left;"> HOSTESS </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> You </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> will </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> not </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> pay </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> for </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> the </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> glasses </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> you </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> have </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:left;"> burst </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 74 </td>
+   <td style="text-align:left;"> SLY </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> No </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> not </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> a </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> denier </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> Go </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> by </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> Saint </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> Jeronimy </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> go </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> to </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> thy </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> cold </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> bed </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 76 </td>
+   <td style="text-align:left;"> and </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 76 </td>
+   <td style="text-align:left;"> warm </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 76 </td>
+   <td style="text-align:left;"> thee </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 78 </td>
+   <td style="text-align:left;"> HOSTESS </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 79 </td>
+   <td style="text-align:left;"> I </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 79 </td>
+   <td style="text-align:left;"> know </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 79 </td>
+   <td style="text-align:left;"> my </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1508 </td>
+   <td style="text-align:left;"> The Taming of the Shrew </td>
+   <td style="text-align:right;"> 79 </td>
+   <td style="text-align:left;"> remedy </td>
+  </tr>
+</tbody>
+</table> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"]]}})</script><script async src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<!-- rnb-htmlwidget-end -->
+
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>With my well-trained eye, I notice that “character names designating who’s speaking” are all set in all-caps. Given this material property, we can insert a column into the data that states, for each word, who is speaking it.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yIChpIGluICgxOm5yb3coc2VudGltZW50cykpKXtcblxuYGBgIn0= -->
+<pre class="r"><code>for (i in (1:nrow(sentiments))){
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBtZXNzYWdlOlxuVW5rbm93biBvciB1bmluaXRpYWxpc2VkIGNvbHVtbjogYGNoYXJhY3RlcmAuIFxuIn0= -->
+<pre><code>Warning message:
+Unknown or uninitialised column: `character`. </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBteXdvcmQgPSBzZW50aW1lbnRzW2ksXSAlPiUgcHVsbCh3b3JkKVxuICBpZiAobXl3b3JkID09IHRvdXBwZXIobXl3b3JkKSl7XG4gICAgc3BlYWtlciA9IG15d29yZFxuICB9XG4gIHNlbnRpbWVudHMkY2hhcmFjdGVyW2ldID0gc3BlYWtlclxufVxuYGBgIn0= -->
+<pre class="r"><code>  myword = sentiments[i,] %&gt;% pull(word)
+  if (myword == toupper(myword)){
+    speaker = myword
+  }
+  sentiments$character[i] = speaker
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiVW5rbm93biBvciB1bmluaXRpYWxpc2VkIGNvbHVtbjogYGNoYXJhY3RlcmAuXG4ifQ== -->
+<pre><code>Unknown or uninitialised column: `character`.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGV4dCBBbmFseXNpcyBOb3RlYm9vayIKYXV0aG9yOiBMYXJzIEhpbnJpY2hzCmRhdGU6IDE0LU9jdC0yMDIwCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyIHNldHVwfQppZiAoIXJlcXVpcmUocGFjbWFuKSkgaW5zdGFsbC5wYWNrYWdlcygicGFjbWFuIikKbGlicmFyeShwYWNtYW4pCnBfbG9hZChyaW8sIHRpZHl2ZXJzZSwgdGlkeXRleHQsIGtuaXRyLCBmbGV4dGFibGUsCiAgICAgICBrYWJsZUV4dHJhLAogICAgICAgdGV4dHJlYWRyLCBndXRlbmJlcmdyLCBqYW5pdG9yKQpgYGAKCiMjIERpZ2l0YWwgdGV4dCBhbmFseXNpczogYSBsb29rIGF0IHRoZSB0b29sYm94IAoKSGF2aW5nIHJlYWQgW3RoZSBOWVQgcGllY2VdKGh0dHBzOi8vd3d3Lm55dGltZXMuY29tLzIwMjAvMTAvMTIvc3R5bGUvc2VsZi1jYXJlL3NvY2lhbC1tZWRpYS0uaHRtbCkgYWJvdXQgc29jaWFsIG1lZGlhIHRleHQgYW5hbHlzaXMsIGFuZCBwZXJoYXBzIGZyb20geW91ciBvd24gbGlmZSBpbiB0aGlzIGRpZ2l0YWwgd29ybGQgb2Ygb3VycyEhLCB5b3UgaGF2ZSBhdCBsZWFzdCBoZWFkIGFib3V0IHNvbWUgb2YgdGhlIG1ldGhvZHMgdGhhdCBhICJjb21wdXRhdGlvbmFsIHNvY2lvbGluZ3Vpc3QiIG9yIGEgImRpZ2l0YWwgaHVtYW5pc3QiIG1pZ2h0IGFwcGx5IHRvIHRleHQuIAoKIyMjIFNlbnRpbWVudCBhbmFseXNpcwoKIyMjIyAiUG9zaXRpdmUiIHZlcnN1cyAibmVnYXRpdmUiIHdvcmRzCgohW1NlbnRpbWVudCBhbmFseXNpczogbiBwb3Mgdi4gbiBuZWcgcGVyIHRleHQuXShzYTEucG5nKQoKIVtTZW50aW1lbnQgYW5hbHlzaXM6IGNvbXBhcmluZyBwb3M6bmVnIHJhdGlvcy5dKHNhMi5wbmcpCgohW1NlbnRpbWVudCBhbmFseXNpczogc3BsaXQgZWFjaCB0ZXh0IGludG8gMTAwIHNsaWNlcywgdGhlbiB0cmFjayBzZW50aW1lbnQgY3VydmUuXShzYTMucG5nKQoKIVtTZW50aW1lbnQgYW5hbHlzaXM6IHNhbWUgYXMgYWJvdmUsIGJ1dCB3aXRoIGFjdCBib3VuZGFyaWVzIG1hcmtlZC5dKHNhNC5wbmcpCgojIyMjIFRhZyBmb3IgbW9yZSB0aGFuIDIgZW1vdGlvbnMKCiFbU2VudGltZW50IGFuYWx5c2lzOiBwb3MsIG5lZywgYW5kIDggb3RoZXIgc2VudGltZW50IGNhdGVnb3JpZXMuXShzYTUucG5nKQoKCgojIyMgVGFnIGZvciBwYXJ0cyBvZiBzcGVlY2gKCiFbUGVubiBUcmVlYmFuayBQT1MgdGFnc2V0XShwb3NfdGFnc2V0LnBuZykKCiMjIyBUYWcgZm9yIHNlbWFudGljIGNsYXNzZXMgCgohW1VuaXZlcnNhbCBzZW1hbnRpYyB0YWdzZXRdKHNlbWFudGljX3RhZ3NldC5wbmcpCgojIyBTdGFydCBieSBsb2FkaW5nIG91ciBkYXRhCgpGaXJzdCB3ZSdsbCBnZXQgYW4gaW52ZW50b3J5IG9mIGFsbCB0aGUgLkRPQ1ggZmlsZXMgaW4gb3VyIHByb2plY3QgZGlyZWN0b3J5LgoKYGBge3J9Cih0ZXh0ZmlsZXMgPC0gbGlzdC5maWxlcyhwYXR0ZXJuID0gIi5kb2N4IikpCmBgYAoKVGhlIHNlY29uZCBmaWxlIGhhcyBtb3JlIGZvcm1hdHRpbmcgYW5kIG1heSwgZm9yIHRoZSB0aW1lIGJlaW5nLCBiZSBtb3JlIHVzZWZ1bC4gV2UnbGwgcmVhZCBpdCBpbi4gSGVyZSBpcyB0aGUgdG9wIG9mIGl0cyBjb250ZW50LgoKYGBge3J9CmYgPC0gcmVhZF9kb2N4KHRleHRmaWxlc1syXSkKZiAlPiUgaGVhZCgxMCkKYGBgCgpIZXJlIGl0IGlzLCBjb252ZXJ0ZWQgdG8gdGFidWxhciBmb3JtYXQuCgpgYGB7cn0KZiA8LSAKICBmICU+JSAKICBlbmZyYW1lKCkgJT4lIAogIHNlbGVjdChsaW5lID0gMikgJT4lIAogIG11dGF0ZShmaWxlID0gdGV4dGZpbGVzWzJdKQpmICU+JSAKICBoZWFkKDEwKSAlPiUgCiAga2JsKCkgJT4lIAogIGthYmxlX3N0eWxpbmcoYm9vdHN0cmFwX29wdGlvbnMgPSAic3RyaXBlZCIsIAogICAgICAgICAgICAgICAgZnVsbF93aWR0aCA9IEYsIAogICAgICAgICAgICAgICAgcG9zaXRpb24gPSAibGVmdCIpIApgYGAKCiMjIE5hcnJvd2luZyBkb3duIG91ciBpbnRlcmVzdAoKSSBoYXZlIGp1c3QgcmVjZWl2ZWQgdGhlIGxhdGVzdCBub3RlcyBmcm9tIGNsYXNzOiB0aGUgaW50ZXJlc3Qgc2VlbXMgdG8gYmUgaW4gdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiB2ZXJzZSBhbmQgcHJvc2UgKmNyb3NzZWQgd2l0aCogYW4gaW50ZXJlc3QgaW4gY2hhcmFjdGVyLiBJIGludGVycHJldCB0aGlzIHRvIG1lYW4gdGhhdCB0aGVyZSBhcmUgY2hhcmFjdGVycyB0aGF0IGFwcGVhciBib3RoIGluIHZlcnNlIGFuZCBpbiBwcm9zZSBzZWN0aW9ucywgYW5kIHdlIDxtYXJrPndhbnQgdG8ga25vdyBob3cgdGhlIGxhbmd1YWdlIGFzc29jaWF0ZWQgd2l0aCBlYWNoIGNoYXJhY3RlciBkaWZmZXJzIGZyb20gdmVyc2UgdG8gcHJvc2UuPC9tYXJrPgoKSW4gdGhlIHRleHQgc2FtcGxlcyBJIGhhdmUsIGNoYXJhY3RlciBzcGVlY2ggaXMgbm90IG1hcmtlZC4gV2UgbWlnaHQgYmUgYmV0dGVyIG9mZiBpZiB3ZSBwdWxsICpUYW1pbmcgb2YgdGhlIFNocmV3KiBmcm9tIHd3dy5ndXRlbmJlcmcub3JnLgoKTHVja2lseSB0aGVyZSBpcyBhbiBSIG1vZHVsZSB0aGF0IGludGVyZmFjZXMgd2l0aCB0aGUgR3V0ZW5iZXJnIGFyY2hpdmVzLiBJdCBpcyBjYWxsZWQgYGd1dGVuYmVyZ3JgLiBJIHdpbGwgcHVsbCB0aGUgd2hvbGUgdGV4dCBmcm9tIHRoZXJlLiAKCmBgYHtyfQpzaGFrZXNwZWFyZSA8LSAKICBndXRlbmJlcmdfd29ya3MoYXV0aG9yID09ICJTaGFrZXNwZWFyZSwgV2lsbGlhbSIpIAoKc2hha2VzcGVhcmUgICAgICAgICAgICAgICAgICAgICU+JSAKICBtdXRhdGUoZW50cnkgPSByb3dfbnVtYmVyKCkpICU+JSAKICBzZWxlY3QoZW50cnksIHRpdGxlKSAgJT4lIAogIGtibCgpICU+JSAKICBrYWJsZV9zdHlsaW5nKGJvb3RzdHJhcF9vcHRpb25zID0gInN0cmlwZWQiLCAKICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGLCAKICAgICAgICAgICAgICAgIHBvc2l0aW9uID0gImxlZnQiKSAKYGBgCgpTbyBvdXIgdGV4dCBpcyB0aGVyZSBhbmQgYXZhaWxhYmxlLCBhdCBpbmRleCBuby4gMTAuIAoKYGBge3J9CklEcyA8LSAgc2hha2VzcGVhcmVbYygxMCksXSRndXRlbmJlcmdfaWQKCnNoYWtlc3BlYXJlICU+JSAKICBmaWx0ZXIoZ3V0ZW5iZXJnX2lkICVpbiUgSURzKSAlPiUgCiAgc2VsZWN0KGd1dGVuYmVyZ19pZCwgdGl0bGUpCmBgYAoKTGV0J3MgZG93bmxvYWQgdGhlIHBsYXkgYW5kIHN0b3JlIGl0IGluIGFuIFIgb2JqZWN0LiAKCmBgYHtyfQpwbGF5cyA8LSBndXRlbmJlcmdfZG93bmxvYWQoSURzLCBtZXRhX2ZpZWxkcyA9ICJ0aXRsZSIpCgpwbGF5cyAlPiUgYXNfdGliYmxlKCkKYGBgCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGV4dCBBbmFseXNpcyBOb3RlYm9vayIKYXV0aG9yOiBMYXJzIEhpbnJpY2hzCmRhdGU6IDE0LU9jdC0yMDIwCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyIHNldHVwfQppZiAoIXJlcXVpcmUocGFjbWFuKSkgaW5zdGFsbC5wYWNrYWdlcygicGFjbWFuIikKbGlicmFyeShwYWNtYW4pCnBfbG9hZChyaW8sIHRpZHl2ZXJzZSwgdGlkeXRleHQsIGtuaXRyLCBmbGV4dGFibGUsCiAgICAgICBrYWJsZUV4dHJhLAogICAgICAgdGV4dHJlYWRyLCBndXRlbmJlcmdyLCBqYW5pdG9yKQpgYGAKCiMjIERpZ2l0YWwgdGV4dCBhbmFseXNpczogYSBsb29rIGF0IHRoZSB0b29sYm94IAoKSGF2aW5nIHJlYWQgW3RoZSBOWVQgcGllY2VdKGh0dHBzOi8vd3d3Lm55dGltZXMuY29tLzIwMjAvMTAvMTIvc3R5bGUvc2VsZi1jYXJlL3NvY2lhbC1tZWRpYS0uaHRtbCkgYWJvdXQgc29jaWFsIG1lZGlhIHRleHQgYW5hbHlzaXMsIGFuZCBwZXJoYXBzIGZyb20geW91ciBvd24gbGlmZSBpbiB0aGlzIGRpZ2l0YWwgd29ybGQgb2Ygb3VycyEhLCB5b3UgaGF2ZSBhdCBsZWFzdCBoZWFkIGFib3V0IHNvbWUgb2YgdGhlIG1ldGhvZHMgdGhhdCBhICJjb21wdXRhdGlvbmFsIHNvY2lvbGluZ3Vpc3QiIG9yIGEgImRpZ2l0YWwgaHVtYW5pc3QiIG1pZ2h0IGFwcGx5IHRvIHRleHQuIAoKIyMjIFNlbnRpbWVudCBhbmFseXNpcwoKIyMjIyAiUG9zaXRpdmUiIHZlcnN1cyAibmVnYXRpdmUiIHdvcmRzCgohW1NlbnRpbWVudCBhbmFseXNpczogbiBwb3Mgdi4gbiBuZWcgcGVyIHRleHQuXShzYTEucG5nKQoKIVtTZW50aW1lbnQgYW5hbHlzaXM6IGNvbXBhcmluZyBwb3M6bmVnIHJhdGlvcy5dKHNhMi5wbmcpCgohW1NlbnRpbWVudCBhbmFseXNpczogc3BsaXQgZWFjaCB0ZXh0IGludG8gMTAwIHNsaWNlcywgdGhlbiB0cmFjayBzZW50aW1lbnQgY3VydmUuXShzYTMucG5nKQoKIVtTZW50aW1lbnQgYW5hbHlzaXM6IHNhbWUgYXMgYWJvdmUsIGJ1dCB3aXRoIGFjdCBib3VuZGFyaWVzIG1hcmtlZC5dKHNhNC5wbmcpCgojIyMjIFRhZyBmb3IgbW9yZSB0aGFuIDIgZW1vdGlvbnMKCiFbU2VudGltZW50IGFuYWx5c2lzOiBwb3MsIG5lZywgYW5kIDggb3RoZXIgc2VudGltZW50IGNhdGVnb3JpZXMuXShzYTUucG5nKQoKCgojIyMgVGFnIGZvciBwYXJ0cyBvZiBzcGVlY2gKCiFbUGVubiBUcmVlYmFuayBQT1MgdGFnc2V0XShwb3NfdGFnc2V0LnBuZykKCiMjIyBUYWcgZm9yIHNlbWFudGljIGNsYXNzZXMgCgohW1VuaXZlcnNhbCBzZW1hbnRpYyB0YWdzZXRdKHNlbWFudGljX3RhZ3NldC5wbmcpCgojIyBTdGFydCBieSBsb2FkaW5nIG91ciBkYXRhCgpGaXJzdCB3ZSdsbCBnZXQgYW4gaW52ZW50b3J5IG9mIGFsbCB0aGUgLkRPQ1ggZmlsZXMgaW4gb3VyIHByb2plY3QgZGlyZWN0b3J5LgoKYGBge3J9Cih0ZXh0ZmlsZXMgPC0gbGlzdC5maWxlcyhwYXR0ZXJuID0gIi5kb2N4IikpCmBgYAoKVGhlIHNlY29uZCBmaWxlIGhhcyBtb3JlIGZvcm1hdHRpbmcgYW5kIG1heSwgZm9yIHRoZSB0aW1lIGJlaW5nLCBiZSBtb3JlIHVzZWZ1bC4gV2UnbGwgcmVhZCBpdCBpbi4gSGVyZSBpcyB0aGUgdG9wIG9mIGl0cyBjb250ZW50LgoKYGBge3J9CmYgPC0gcmVhZF9kb2N4KHRleHRmaWxlc1syXSkKZiAlPiUgaGVhZCgxMCkKYGBgCgpIZXJlIGl0IGlzLCBjb252ZXJ0ZWQgdG8gdGFidWxhciBmb3JtYXQuCgpgYGB7cn0KZiA8LSAKICBmICU+JSAKICBlbmZyYW1lKCkgJT4lIAogIHNlbGVjdChsaW5lID0gMikgJT4lIAogIG11dGF0ZShmaWxlID0gdGV4dGZpbGVzWzJdKQpmICU+JSAKICBoZWFkKDEwKSAlPiUgCiAga2JsKCkgJT4lIAogIGthYmxlX3N0eWxpbmcoYm9vdHN0cmFwX29wdGlvbnMgPSAic3RyaXBlZCIsIAogICAgICAgICAgICAgICAgZnVsbF93aWR0aCA9IEYsIAogICAgICAgICAgICAgICAgcG9zaXRpb24gPSAibGVmdCIpIApgYGAKCiMjIE5hcnJvd2luZyBkb3duIG91ciBpbnRlcmVzdAoKSSBoYXZlIGp1c3QgcmVjZWl2ZWQgdGhlIGxhdGVzdCBub3RlcyBmcm9tIGNsYXNzOiB0aGUgaW50ZXJlc3Qgc2VlbXMgdG8gYmUgaW4gdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiB2ZXJzZSBhbmQgcHJvc2UgKmNyb3NzZWQgd2l0aCogYW4gaW50ZXJlc3QgaW4gY2hhcmFjdGVyLiBJIGludGVycHJldCB0aGlzIHRvIG1lYW4gdGhhdCB0aGVyZSBhcmUgY2hhcmFjdGVycyB0aGF0IGFwcGVhciBib3RoIGluIHZlcnNlIGFuZCBpbiBwcm9zZSBzZWN0aW9ucywgYW5kIHdlIDxtYXJrPndhbnQgdG8ga25vdyBob3cgdGhlIGxhbmd1YWdlIGFzc29jaWF0ZWQgd2l0aCBlYWNoIGNoYXJhY3RlciBkaWZmZXJzIGZyb20gdmVyc2UgdG8gcHJvc2UuPC9tYXJrPgoKSW4gdGhlIHRleHQgc2FtcGxlcyBJIGhhdmUsIGNoYXJhY3RlciBzcGVlY2ggaXMgbm90IG1hcmtlZC4gV2UgbWlnaHQgYmUgYmV0dGVyIG9mZiBpZiB3ZSBwdWxsICpUYW1pbmcgb2YgdGhlIFNocmV3KiBmcm9tIHd3dy5ndXRlbmJlcmcub3JnLgoKTHVja2lseSB0aGVyZSBpcyBhbiBSIG1vZHVsZSB0aGF0IGludGVyZmFjZXMgd2l0aCB0aGUgR3V0ZW5iZXJnIGFyY2hpdmVzLiBJdCBpcyBjYWxsZWQgYGd1dGVuYmVyZ3JgLiBJIHdpbGwgcHVsbCB0aGUgd2hvbGUgdGV4dCBmcm9tIHRoZXJlLiAKCmBgYHtyfQpzaGFrZXNwZWFyZSA8LSAKICBndXRlbmJlcmdfd29ya3MoYXV0aG9yID09ICJTaGFrZXNwZWFyZSwgV2lsbGlhbSIpIAoKc2hha2VzcGVhcmUgICAgICAgICAgICAgICAgICAgICU+JSAKICBtdXRhdGUoZW50cnkgPSByb3dfbnVtYmVyKCkpICU+JSAKICBzZWxlY3QoZW50cnksIHRpdGxlKSAgJT4lIAogIGtibCgpICU+JSAKICBrYWJsZV9zdHlsaW5nKGJvb3RzdHJhcF9vcHRpb25zID0gInN0cmlwZWQiLCAKICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGLCAKICAgICAgICAgICAgICAgIHBvc2l0aW9uID0gImxlZnQiKSAKYGBgCgpTbyBvdXIgdGV4dCBpcyB0aGVyZSBhbmQgYXZhaWxhYmxlLCBhdCBpbmRleCBuby4gMTAuIAoKYGBge3J9CklEcyA8LSAgc2hha2VzcGVhcmVbYygxMCksXSRndXRlbmJlcmdfaWQKCnNoYWtlc3BlYXJlICU+JSAKICBmaWx0ZXIoZ3V0ZW5iZXJnX2lkICVpbiUgSURzKSAlPiUgCiAgc2VsZWN0KGd1dGVuYmVyZ19pZCwgdGl0bGUpCmBgYAoKTGV0J3MgZG93bmxvYWQgdGhlIHBsYXkgYW5kIHN0b3JlIGl0IGluIGFuIFIgb2JqZWN0LiBJIHdpbGwgY2FsbCBpdCBgcGxheXNgIChwbHVyYWwgaW4gY2FzZSB3ZSBhZGQgbW9yZSB0ZXh0cyBvciBzb21ldGhpbmcuKQoKYGBge3J9CnBsYXlzIDwtIGd1dGVuYmVyZ19kb3dubG9hZChJRHMsIG1ldGFfZmllbGRzID0gInRpdGxlIikKCnBsYXlzICU+JSBhc190aWJibGUoKQpgYGAKCkknbGwgY29udmVydCB0aGUgZGF0YSB0byBvbmUtd29yZC1wZXIgcm93IG5vdy4gSXQncyB0aGUgZm9ybWF0IHdlIG5lZWQgZm9yIGFueSBvZiB0aGVzZSBhbmFseXNlcy4KCmBgYHtyfQpzZW50aW1lbnRzIDwtIHBsYXlzICU+JQogICNncm91cF9ieSh0aXRsZSkgJT4lCiAgbXV0YXRlKGxpbmUgPSByb3dfbnVtYmVyKCkpICU+JSAKICB1bm5lc3RfdG9rZW5zKHdvcmQsIHRleHQsCiAgICAgICAgICAgICAgICB0b19sb3dlciA9IEYpIAoKc2VudGltZW50cyAlPiUgCiAgc2xpY2UoMTUwOjE5MCkgJT4lIAogIGtibCgpICU+JSAKICBrYWJsZV9zdHlsaW5nKGJvb3RzdHJhcF9vcHRpb25zID0gInN0cmlwZWQiLCAKICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGLCAKICAgICAgICAgICAgICAgIHBvc2l0aW9uID0gImxlZnQiKSAKYGBgCgoKV2l0aCBteSB3ZWxsLXRyYWluZWQgZXllLCBJIG5vdGljZSB0aGF0ICJjaGFyYWN0ZXIgbmFtZXMgZGVzaWduYXRpbmcgd2hvJ3Mgc3BlYWtpbmciIGFyZSBhbGwgc2V0IGluIGFsbC1jYXBzLiBHaXZlbiB0aGlzIG1hdGVyaWFsIHByb3BlcnR5LCB3ZSBjYW4gaW5zZXJ0IGEgY29sdW1uIGludG8gdGhlIGRhdGEgdGhhdCBzdGF0ZXMsIGZvciBlYWNoIHdvcmQsIHdobyBpcyBzcGVha2luZyBpdC4gCgpgYGB7cn0KZm9yIChpIGluICgxOm5yb3coc2VudGltZW50cykpKXsKICBteXdvcmQgPSBzZW50aW1lbnRzW2ksXSAlPiUgcHVsbCh3b3JkKQogIGlmIChteXdvcmQgPT0gdG91cHBlcihteXdvcmQpKXsKICAgIHNwZWFrZXIgPSBteXdvcmQKICB9CiAgc2VudGltZW50cyRzcGVha2VyW2ldID0gc3BlYWtlcgp9CgoKYGBgCgoKCg==</div>
 
 
 
