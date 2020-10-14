@@ -142,6 +142,10 @@ for (i in (1:nrow(sentiments))){
   sentiments$speaker[i] = speaker
 }
 
+sentiments %>% 
+  slice(200:400) %>% 
+  kable()
+
 
 ```
 

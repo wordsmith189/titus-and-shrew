@@ -1949,14 +1949,9 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYgKCFyZXF1aXJlKHBhY21hbikpIGluc3RhbGwucGFja2FnZXMoXCJwYWNtYW5cIilcbmBgYCJ9 -->
-<pre class="r"><code>if (!require(pacman)) install.packages(&quot;pacman&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiVGhlcmUgd2VyZSAyNiB3YXJuaW5ncyAodXNlIHdhcm5pbmdzKCkgdG8gc2VlIHRoZW0pXG4ifQ== -->
-<pre><code>There were 26 warnings (use warnings() to see them)</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShwYWNtYW4pXG5wX2xvYWQocmlvLCB0aWR5dmVyc2UsIHRpZHl0ZXh0LCBrbml0ciwgZmxleHRhYmxlLFxuICAgICAgIGthYmxlRXh0cmEsXG4gICAgICAgdGV4dHJlYWRyLCBndXRlbmJlcmdyLCBqYW5pdG9yKVxuYGBgIn0= -->
-<pre class="r"><code>library(pacman)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYgKCFyZXF1aXJlKHBhY21hbikpIGluc3RhbGwucGFja2FnZXMoXCJwYWNtYW5cIilcbmxpYnJhcnkocGFjbWFuKVxucF9sb2FkKHJpbywgdGlkeXZlcnNlLCB0aWR5dGV4dCwga25pdHIsIGZsZXh0YWJsZSxcbiAgICAgICBrYWJsZUV4dHJhLFxuICAgICAgIHRleHRyZWFkciwgZ3V0ZW5iZXJnciwgamFuaXRvcilcbmBgYCJ9 -->
+<pre class="r"><code>if (!require(pacman)) install.packages(&quot;pacman&quot;)
+library(pacman)
 p_load(rio, tidyverse, tidytext, knitr, flextable,
        kableExtra,
        textreadr, gutenbergr, janitor)</code></pre>
@@ -2018,8 +2013,9 @@ p_load(rio, tidyverse, tidytext, knitr, flextable,
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKHRleHRmaWxlcyA8LSBsaXN0LmZpbGVzKHBhdHRlcm4gPSBcIi5kb2N4XCIpKVxuYGBgIn0= -->
 <pre class="r"><code>(textfiles &lt;- list.files(pattern = &quot;.docx&quot;))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicHJvc2UgYW5kIHZlcnNlIGNzdiA1MDAgd29yZHMuZG9jeFwiIFwiUHJvc2UgYW5kIFZlcnNlIGZyb20gU2hyZXcuZG9jeFwiICAgXG4ifQ== -->
-<pre><code>[1] &quot;prose and verse csv 500 words.docx&quot; &quot;Prose and Verse from Shrew.docx&quot;   </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicHJvc2UgYW5kIHZlcnNlIGNzdiA1MDAgd29yZHMuZG9jeFwiXG5bMl0gXCJQcm9zZSBhbmQgVmVyc2UgZnJvbSBTaHJldy5kb2N4XCIgICBcbiJ9 -->
+<pre><code>[1] &quot;prose and verse csv 500 words.docx&quot;
+[2] &quot;Prose and Verse from Shrew.docx&quot;   </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2126,23 +2122,11 @@ f %&gt;%
 <p>Luckily there is an R module that interfaces with the Gutenberg archives. It is called <code>gutenbergr</code>. I will pull the whole text from there.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hha2VzcGVhcmUgPC0gXG4gIGd1dGVuYmVyZ193b3JrcyhhdXRob3IgPT0gXCJTaGFrZXNwZWFyZSwgV2lsbGlhbVwiKSBcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hha2VzcGVhcmUgPC0gXG4gIGd1dGVuYmVyZ193b3JrcyhhdXRob3IgPT0gXCJTaGFrZXNwZWFyZSwgV2lsbGlhbVwiKSBcblxuc2hha2VzcGVhcmUgICAgICAgICAgICAgICAgICAgICU+JSBcbiAgbXV0YXRlKGVudHJ5ID0gcm93X251bWJlcigpKSAlPiUgXG4gIHNlbGVjdChlbnRyeSwgdGl0bGUpICAlPiUgXG4gIGtibCgpICU+JSBcbiAga2FibGVfc3R5bGluZyhib290c3RyYXBfb3B0aW9ucyA9IFwic3RyaXBlZFwiLCBcbiAgICAgICAgICAgICAgICBmdWxsX3dpZHRoID0gRiwgXG4gICAgICAgICAgICAgICAgcG9zaXRpb24gPSBcImxlZnRcIikgXG5gYGAifQ== -->
 <pre class="r"><code>shakespeare &lt;- 
-  gutenberg_works(author == &quot;Shakespeare, William&quot;) </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYGZpbHRlcl8oKWAgaXMgZGVwcmVjYXRlZCBhcyBvZiBkcGx5ciAwLjcuMC5cblBsZWFzZSB1c2UgYGZpbHRlcigpYCBpbnN0ZWFkLlxuU2VlIHZpZ25ldHRlKCdwcm9ncmFtbWluZycpIGZvciBtb3JlIGhlbHBcblx1MDAxYls5MG1UaGlzIHdhcm5pbmcgaXMgZGlzcGxheWVkIG9uY2UgZXZlcnkgOCBob3Vycy5cdTAwMWJbMzltXG5cdTAwMWJbOTBtQ2FsbCBgbGlmZWN5Y2xlOjpsYXN0X3dhcm5pbmdzKClgIHRvIHNlZSB3aGVyZSB0aGlzIHdhcm5pbmcgd2FzIGdlbmVyYXRlZC5cdTAwMWJbMzltYGRpc3RpbmN0XygpYCBpcyBkZXByZWNhdGVkIGFzIG9mIGRwbHlyIDAuNy4wLlxuUGxlYXNlIHVzZSBgZGlzdGluY3QoKWAgaW5zdGVhZC5cblNlZSB2aWduZXR0ZSgncHJvZ3JhbW1pbmcnKSBmb3IgbW9yZSBoZWxwXG5cdTAwMWJbOTBtVGhpcyB3YXJuaW5nIGlzIGRpc3BsYXllZCBvbmNlIGV2ZXJ5IDggaG91cnMuXHUwMDFiWzM5bVxuXHUwMDFiWzkwbUNhbGwgYGxpZmVjeWNsZTo6bGFzdF93YXJuaW5ncygpYCB0byBzZWUgd2hlcmUgdGhpcyB3YXJuaW5nIHdhcyBnZW5lcmF0ZWQuXHUwMDFiWzM5bVxuIn0= -->
-<pre><code>`filter_()` is deprecated as of dplyr 0.7.0.
-Please use `filter()` instead.
-See vignette('programming') for more help
-[90mThis warning is displayed once every 8 hours.[39m
-[90mCall `lifecycle::last_warnings()` to see where this warning was generated.[39m`distinct_()` is deprecated as of dplyr 0.7.0.
-Please use `distinct()` instead.
-See vignette('programming') for more help
-[90mThis warning is displayed once every 8 hours.[39m
-[90mCall `lifecycle::last_warnings()` to see where this warning was generated.[39m</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hha2VzcGVhcmUgICAgICAgICAgICAgICAgICAgICU+JSBcbiAgbXV0YXRlKGVudHJ5ID0gcm93X251bWJlcigpKSAlPiUgXG4gIHNlbGVjdChlbnRyeSwgdGl0bGUpICAlPiUgXG4gIGtibCgpICU+JSBcbiAga2FibGVfc3R5bGluZyhib290c3RyYXBfb3B0aW9ucyA9IFwic3RyaXBlZFwiLCBcbiAgICAgICAgICAgICAgICBmdWxsX3dpZHRoID0gRiwgXG4gICAgICAgICAgICAgICAgcG9zaXRpb24gPSBcImxlZnRcIikgXG5gYGAifQ== -->
-<pre class="r"><code>shakespeare                    %&gt;% 
+  gutenberg_works(author == &quot;Shakespeare, William&quot;) 
+
+shakespeare                    %&gt;% 
   mutate(entry = row_number()) %&gt;% 
   select(entry, title)  %&gt;% 
   kbl() %&gt;% 
@@ -2519,15 +2503,10 @@ shakespeare %&gt;%
 <p>Let’s download the play and store it in an R object. I will call it <code>plays</code> (plural in case we add more texts or something.)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxheXMgPC0gZ3V0ZW5iZXJnX2Rvd25sb2FkKElEcywgbWV0YV9maWVsZHMgPSBcInRpdGxlXCIpXG5gYGAifQ== -->
-<pre class="r"><code>plays &lt;- gutenberg_download(IDs, meta_fields = &quot;title&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRGV0ZXJtaW5pbmcgbWlycm9yIGZvciBQcm9qZWN0IEd1dGVuYmVyZyBmcm9tIGh0dHA6Ly93d3cuZ3V0ZW5iZXJnLm9yZy9yb2JvdC9oYXJ2ZXN0XG5Vc2luZyBtaXJyb3IgaHR0cDovL2FsZXBoLmd1dGVuYmVyZy5vcmdcbiJ9 -->
-<pre><code>Determining mirror for Project Gutenberg from http://www.gutenberg.org/robot/harvest
-Using mirror http://aleph.gutenberg.org</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxheXMgJT4lIGFzX3RpYmJsZSgpXG5gYGAifQ== -->
-<pre class="r"><code>plays %&gt;% as_tibble()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxheXMgPC0gZ3V0ZW5iZXJnX2Rvd25sb2FkKElEcywgbWV0YV9maWVsZHMgPSBcInRpdGxlXCIpXG5cbnBsYXlzICU+JSBhc190aWJibGUoKVxuYGBgIn0= -->
+<pre class="r"><code>plays &lt;- gutenberg_download(IDs, meta_fields = &quot;title&quot;)
+
+plays %&gt;% as_tibble()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6NDgyOX0sInJkZiI6Ikg0c0lBQUFBQUFBQUErMTlXNU1ieDVVbWJVdjJXT3VMYk1tM0hZOWRORVdDRjNUTGxHV0YzVzJiZzZaSU5teVN6V1ZENGlnWWpvMEVrQUJLWFJlNExnM0JUL3RIOTIwZjVrZHN6T3o1dnBPWlZRQ2EzWTZZaDMwcGgxdk5ycXpLeXN2SmMvbk9wVjUrK20rL2VlZmYzcmwyN2RvM3JyMTE3ZXZYdnZHMi9QUGEyNStOSHUvOTd0cTF0NzR1ZjN4TkdyNk4zMS9KVGUveHptdlh2aXUvL2wxdS9EL2RUL2ZUL1hRLzNVLzMwLzEwUDkxUDk5UDlkRC9kVC9mVC9mei8vcm4yTHUxME5lQi9NanArRkkwR3o0YlBuMFFuanlQOGRYcjg4dEVyMTN6Ti9mN3hlQjI5aXBNa05tbDB1akJudGx4YVU5aXR1OTcwK3dlZkZpWTFWVnhHTDJ4UjVwblpmdkNuZXIyTTRpeXFGallhWnRONlVzVjU1dHEvT1lpZW5yejgxUDMxczRmSEw0ZW5vNU1YeDQ5ZVJxZFB2K2hISnFyaTdNd1c3b1p2SForY2poNmRucm8vMzNveGVQTElONzE0T3ZqaTBVdmY5RS9IbnowZm5UNTc5TnovZmZybzVlY0R1YlExd0p0SGd4Y2plZWNna3BVNmVUckFLNHQ0c29oc2FySW9uMFV2ekxRMjd1WWJudytmUDN6MGZEUThrZHVrTlpsR2M1dFZTYmczTHYydEh6Nzl6TjhwODQrcVBQbzh6aVp5YzV3ZllqR1MvTnhHcTdoYVJFZXh5U2Irc2QrK2VEUjYrZG5EWTc1aHMvUFBiU0VMZkJpVmRWemxCWHI4aTVFbExlTE1iTy9LS1c4cGNjOUc3OTk4OHZMUnMrR0orK3ZieHljdlI0K2VuNFlML3ZuM1QyMXhicktLSFR5dGRkUytpOUhMd2ZPbWk2UGh5Zk5QSHoxOXV0M0ZqOXBkdkxCVlVVOFdUUjlQWG43V0RPT2JEejk3S1R1d3ZTOHZIbjBxMnlXclo2dW9YcUticFpKWVpadWwzSDdycDZhZUx5cnJwbTZXUXBtVm4vejdmeG5JSVhnNWZDNTdERklzRjRWZCtURWNEUWZQSHc2MnVudjcxZkRUayswRGN6Z3ljWklYL2VqWWpHMHhOYVZzQWFoaEdvVXBtNnF5MlRUTzVwSHN2QjhGYnZHcnRyMGdienBlLzNvcU5QVG9JRHJOVTF2RnFlVXhJa0hxRzh1TjY1NXllcWZSSXE5TEt4ZGRQOS9CZkNkNW5WWEZlditLZDc0emZQN3BadytGY0o5djM5bmphS0xoZm5Sa1ozbGhjUVJNWXZWZE1sTVRMYXhRNVBaalAzMzlLSk10aWR6UjFhVjYrc1grWDdmdWV3c1gzYi8vKzdDWEpORnlZZTNmYmJUTzZ6NG1PRFB4YnUvLzVMcjExMzgraUpZbUxuQmd5aXFmbkpWOVBCOFYrYnkyMXk5NTQ4ZGY5QXltRkkzTmZHN205cEEwY3Bxc1pUdmxlcFpyRitXaG5Oejh6TEV6djAyVGhSek5lSkxZOGlCYXlVcWJGSXV2eC91bE1CTlRUS09IZWZhM1dvNXdzUitOaEdTNGduMFphejB4cGV2bjF0SWtpUmtYTWQ0aVpJOFJyUEpDdUV5WnhGTzdMeFJXbG1aN0Z0c3I4T3N2Wkw0cllla3k2RXBlc0k1bVlCZlMxend4WlNuRWdnVlpHT0UvNDdvb3F3ZVhyTXJoODd6UGJrdzB0VmxzWmZCUDhtaTg3a2VuSnM2cTZNL2dTWEVxZjg5ekhMbHFzUlk2a3dHUHJTZjI3MkcvVjZaSU1RUjcxZlo5UEl6T3Nud1ZwZXVvc0ttZHJnK2pZWlRXWllVWHpHd2xqQmt6cVJaeE1kMGI1MFV1NTMyN3oyKzlmdlJWWEYxS1g0Y2pkTkNQWkdGbWVWMVVDLzFuUEpNTmM3MzJJOUtneWNxVkVPOGlUbVhhVVdKV3ZvdFAySXkxR2RmVE9RK0RjQ1Y1Ykp5dkQ3aDllR1lpSjFUUDZsbWNUWk9kMDlkLy9UU1dIWm5tcXd4SGlMc2tyOCttK3RCTUNFSUlzRXlzWGU1TTZQRDFjVjZJYUYxSnozYTZIK2t4TXhTbzBhekkwMmdoSjE3WVVGOHA4VmorS2xPYnRUalJPNTVuN1hUK05ucnhvLzFRSHpXWkxFb0VjcDViN3FZd1VtRjA4dEtWbGJXUVBWdGc2T1doZSt6dVVXRmt3NTdab29qNU1LYTN6R1dsSjdYd1RORWFiRHJPeTdJMzdmc1hEV1RTd3FpV2lZMGVKdm1LZldQc2VISXFpN0NYNW5XMTZBbUJvV3MvdnIxVHMrcVZPREJDMmJJbDNJUytqR1lWbmNiSnVYU1NtcWtjU1ZCUjd1ZCtkNkFuYkdGbCsvWW1zcFJnNUU1UEFSRmI2WEZtNmlTY2tMdERPWTYxVURkMlBjbExxOFBLNTNyQ1ZpS1MxakkvV1lMdGJmNys0K0hMMDFHa09za2djTmJlcTRVTTgwZ1dEekkreGs1emhQaTlrTldWRlJWUk0vWHIrY0d4REt5STdWUUVvaENMVE1mb0ZGTGhKeVdIVlBxVjNNZEtWcXQ0SW9QTTk2YkNCWmJ4NUV3V1R0WlBoMTBuQ1I0cUlVbjlHMjZQQ3B3MTBPd3dxa1FiSkJGNy9qRzJGU2hNSnJ3OXZ3MXE2WTJ3RGFZQTE1amxlWElReGJQbzBXU1JDNW1BeFpiUlRPaTU4aU85NVZkVlJtTnR5amNLMTVOTkY2YVQvMTNvdGF5YnJiNTdKT012b1JBczVGN1FuWjRVY21XaDBsd2I1Tno0T1YwZjVVSTFSU0hFTUpUdEJjV0NWZUZzUkdZdWJPd2YzS3gzaCtTcVlWY3VYWU85MThLczVXQ0xBTm4vYS9ScVlhb2V0clN3RDZLVERLUnNsUHRNaXpvNzgvUWxTcE1zL0RTWHFXTzFDMGhUdTgyZTN6MTk5RkIwcnAzaGZYUWNIaW1iTVVhdnNPUUxTNUlGRnhZSzRJRVN3ZTAzWUUrWVllbjJCb3hiR0ZxbFhGeVdpYXhIRkEzNWYzMFJBOXVZZGY4a1NrWFpyNFNEbGRLVEthdnJQSVJKZklhK1MrRlVIRXdpUE0rTHNZK2VDSFBBZ29BSjQyWmh5SW5iVXJrR0ZRY25RemkrUEN0c1pCN0UrTjNUdUNoQnFCUjJTMkVJb21oWlphUHlCSmRXcUVlT2xoL2ZQV3dFdXpweldzVU13K0hVSjNsMmJ0YzlUbG9Xd1MvT2IxOFZacm1VeThJWVJCSUlXNThrdWE2eGFON3pNbHJXbFI1SHZITW1sMFQ3OUE5L01KRDFrUE0wdFVrOGlia29CbHBBQlZtQysxc3Y2dVBBQ2xjVHNhejZJMVhKVEl3eFBSRUxtUXJHQ2hQTlAzUG5WV0JIZWo1RmRlRlJ6WEJtNXlxRFNwdk10b25vRFNSK1QxaFJiTTh0R1FEb2gyeUF5d1dlYURLOFNRNnlzTDV0T25nVFdlNE5LM2U4U3h4dW9RMGpTNlFuZFd0ZXZjdVAxUDZqYzhpdUVsd2x3UkpoL1dXWHJWaXVjcExJTW9TanlTYUl4UlBvOU40SUx3aXNyRjRxdXhDaUVFcFN1WVdsKzFLWVQrQmZEMDFSckhrN0RiQTFTRUlPbE9pZlpMTWlBRk5SL1RjNDdVSm1CWVpNMmUxUEdFWGlTdlpScUVPNGIxWEw0NTRyOVk5TWtpck5nTjVGY3lhSlVWR2FpcjBnSkcyaE4xVXRjdUtiUkdmemxMaUNxTURZTUR2TUlzbW5jeXdLbS8xMGJyNG9jcEczMkZSb1V2RkVOQ3N6WFY5TVViZEdyanNEQVRHUmwyQzFxTm5MNnN0U2tBMzRTZXhoUUhxR1pGRXl5cG9JQU1LWlNHRHIzb010ajhVcTg2KzRNUWdySkFOZUNUTWZwM0ZaeHVkNFFHUzFsWDdDQ1JlNTFlT2hsWVdTNVpWREs4Y2h6L0NMcDE3MEs5bks2WU9lSC85VEdYS2UrVE9rSktidktsVVRHSnN5MkVYN2owVUl3bFFvaEtMM3VOaWM3MWkyV1l4RHp5dG5Na3paaHFEV0RESndnQUljVGdXalhVRjFDSW9wRmk4Mnk0WkVQc0dVUzg1RkJ0MFRyVHdSNW1oMU9qaG41U0pleWx6eXhNMVFCbEdHT2QyRStjZEpoVFYxVTVvSWM4R2VpTGtmTmhDdk11V1pPMXl5Y3NLK3hJSkp1TlZZc3BXTTJrL2xqcDlLaFlPQVIyUXhRSlNxeUhFeEZubFJCbGx4bTJvRnVzVmRDY1lpR2htMFVIZEphQmRUQzJjSitFOE41UXVkNjRQeWJ3TTkyd3I5SmJVWTlQSGtzTVVFKzRFeVpjVWdOR1h2OS9hd2V2NXhudm1HeVQ2VzA4Kzd3QWdYb0g4SU1CT2xvTHBOV2QyanFKdm15Z1NtT1doS0ZmTytBMXVFVEpxZHZnbm1oVFdUaFYrS05CTlRHNzlMdk1OK05aRTFrMmY4T0tMaEROM0pyWXU2RkQ0L3RZNTgwaHlxNUk3a2ZBTVAzbnUyRHF4WHVJR3dTNUk5N0VxVmM0bXNCSWhFZHJWcXRvVUxWUzRNK1JrWTlsanZxb3BhRml4TzRqbk9sYi8vNXJGYnI0Z2NVeFkyVTJKWmNkVjFPUy9seHJkSERVdDFiRklYVmNXbnpseWErdzJsaVlZSGN3Q0VUT1pmQ3JITm9LQnVjS0x0dDk1NkxYWWJCanNHblZub3IvdlJBUE5LbDNMV3lZOTJ6WmM5MFEwS3M2QmRLb0pISitlZjZWVlVLSXgvK21CN1oyaEFSZzR4M09tN0J5a3BrNmRxa3VWaklab0dxR08zcVJXek1RajJFWVI2a3BBeDQ1RXZPUkZaTGxtRndpNWhSMkFkb1IxdVQvNjkxeS90bnFWZDk2YlJ2SGNzUEZSTTV1c3l4MXpaNUxhMDk5aW43LzM2Z01aRG13a3BUKzJUdXVURStxTTF3bXhrbCtUOXBWaUthazFzc3ExTHFlUzlvM2lxQ3ZtRWl5V3NaMGR4Y1BDUWcyOTM1dmVMNS9tcUw2Wi9Ja3pZZ1RrQVpFUnlvOHNkUE1GMzQxWHFWNWJVZmRhZTV1WFd5NmVjWU10U0tDdmpPRzVLWXlvRFg5bGVZd2MvQjdYak5MK1l5VXQvWmpLeHk0cW5jMXJ2OG9XTjBkeDUxVklsUkFnWEZlQWphQTFjRU9FUmdFbWdqb1FYQXh1VlF6YWhwbzM5N0VFZ3pVU3hzSVVZSVZZTjJ6TFBQSmZiNzQxV29sYXRRSURLYXZLOE4xVXNnblM5eWtIWlpVNTFxVkhzRkVPQ29wazd5WnlaMUI2QysvWkZKZ0hlNG1rQW93clRnZjYyaE5DYXhTS2hwMlFaSWdMcVF1YTRCc1FyL2FXN211RFc4dDcxYW1tdnd0QlBjOXA5WmxOQjRDbThuSW4xUnJLVW9oV3N5U2NQRlVDWXhsTlpJRGtnZ2NVMzlqcnRUVStEcEdub1gwVDdGaUpvcFIrUkVZRXJpKzRaRlFUcGFVTzdGU01US0plaXIrcGpBWTI1L1FwYklOYzRpMG1kWmVBWkU4Q3NJbk5vbDRzRzE5akNmUUtKeEExSVlDb2dRQ1VjSWlXRnA5ZUFJY0IrSGthaU0wL3plbHpOYXVvL2ZLSEtxYmhSQm04L2xiL0ZUSlVGMnJOcjR0bXFIZVJUNkVneW1SaE1ZMi9QM3c5SnZMYVYweUM0Q1JsVU9vNEpWSWdoTmZkZkIxSUpteFY0S2c0YUZrYW9WTGFEVWpaNGlhaDFDUDJCRTZsU2QrZ1dsSG9MVFRuSTdURHdJYWNrOGxBdGp6UVdhemRTYkcwbEhESmRpdExSMnRjM1VGbi9NWmFTZUpKSFloVGV6V0F0VmtaMlNxWW85dFY1YTgyOHdZM2pJMU9QY2RoRWhzY1REeG9ycEhzcFhkNThrbk5DbEdDVjArNVRCVmlCMnNMNFdXOUkxam5VWjk0MGsxZENvZkVjTXJLa2I1RzZYc3oxbnlxMm5OSTJDVXFUU3E2MTh4MlkyUXdzYTN1WVAxZlJDQmtlY0xrM2NlNWJMUm1NM2FCTFJveTBQT21sbGhEdlVteXdnRUp3ajYzS1F0SHdBQXRpeGNEN29PQ1dIa1dBMHVtcCtUNEYxRlNHMDhlV3dMZW9pcWF1RkNFQW9UeGhlMXRHVzQ5QW8zRktieTgxVTVQMmU5QUlxUVNQYlZ6Q25tbXNTSzhmRTFkTjdkNGVJVHFuVWNzd1NTRG50aUh1SHZBWVo3M0RCSGNhRVUrRmdjNWc2QWNOZEhNcUIxdHhQMVdQOHpFa3JxNkJLaGt5Y2FFbTMvMW5EdXVLblhEcFErTlQ3R3NpKzc1TTRuSmhnNlYyazkxRDNHeXZUWUNxUlNzT05JeWhsdm1zb29FbTV1dTh0ZzZTV1NWQStPdWlzdVY2QTdvb1c2WmE3ODJXV3JCVE5uZ2REUW04UUIrclU4eDNGYys4SVhqdm1mUmVBaDBDTCtVMDFJb1hpb0MvSU9OMWJFQ3dtdTZycFdLZEd3WmFQdURtd2t4RVlHWlZDZXc2WFFJZWx6YTRSVFpJZzg5TTdVUzBOdHpoekhPbnRvNXo0VlJoSWxCeHNINVlidW5UQUpNeWdIYklNT1h3ZlptTENQYUhkYVQ2S0licmRoV01HN2hDWGlqNEpPOUtxb1h2L3U0cjBlb1VnSlUzbHhZWXlCb3ZVU3BSek5SeUJINnRudWNlcWFWZWJ4UnkzMFRVRkNyeTVIM0wyZkhrTHZsYXhaUzZmU2o3NWZ6TTQ1a1g0aC9JSEFvd1A4TXRzWFMydWUwTlM5QXNwakFMb1hNbGdxbnFFSnhRU1lLWExxVG5odklXTVh3bzdEd3pTOWsxdDVBVDR1MGVwQXVMZjBxTFIrNFMwYldNSytGMm1mUTlBWitnT2IrTzdEcWM0bzlPclhYWVlGeUtDSmdzZWkyc2hyNEFNZktzYWdIQzVjc2dOV1dCWkFyMCtIaE9LNUlLUHRBWWNLZUdOT3d3eXl2c2lEdk8xK1ZYM1ZubjhwOWF0S2VsY3dhWnhtcTcrM2t1R3Jqd1V5UDJ2Z0l6eWtPd0FhYXRyQVdBWmloN0R0NmVxMXBBbDVTZmJPQUF6bDQ5YkorY2hUcmhVdXQyamtvdzJJdUtPK1dEaVhPM2U4cDdSYXh0WWRka3BEbkFXbVUzSUYyUnVrTHVTOUdKVFNONTczSk5Zd1pJd0VFdHZmTXRoMUNuaE5WQVNNamhhR0ZDTjhFS3VFcG1iQ3FWczlSUVZIRW81U1UyYXdCUzBGTkVqR01GY0ZpaFNLZ0JlcHp0VnhVVTZKMnQrN1pzbmEyelhTL2k5dTk3emlrK2hGRXFocStUTTE3V1E2cDdmL3oyTzQ2OFpTdlVPTUVVckFvOGpUK2gxallYMXVhOGQ0UFI2TkZ6aEVTY0hxaWloS3V1cDM5MUdFOWYwYTIrQTZSQUlRcnZTRHRZZGdhWlZoNnlBU1BycTZBTnZ0cDNQVkN2WHNGTFhhZzNvT3c5eVNGYlMySEQxOGxuS3ZyZFUxQ1lTWFltL0QxRlBMYXMwVjlmaG9sTkMyajVScFRoSmJzMms3TWRMTnNoejF2ZC91YUNicDA4cW5qS2MvSTdaU3FZc0MyM2UvN2U2SGo0Y3FmanV4Unl3Z0FoUnZSd2JBZzdnb0owdVYzbVdmODlkZkNIaTBMMCtud3BlNVREVjNTb3B4T3NWM2JZcTlCNXk5cU9ocTZEUDJXMkIxbFl3TGpGdWtST0N4R3BxVHNjcXhKTWhwVkNmcSticWZvRDhzQzNoaGFzeTlqYTJYNzBuQzhBbHBnNkFNVlBtb2NXRS9YZC9LbGwzbVM1Y2tiWUY2SmJPSFJwYkJpTDRSc1ptMEgvQ1ZyOVlCSTc1ejFGYzk4aXQ2NkhtYlhWZ1FpRmRUL0V2ZWc5YUdoMzh5YytSUGNhWll6MklTSTVoZklqLzZTdnNGclF6ZC93ajRTK3M4dkJnYjFqNHVEUmhEUkZ2aFpQRXlCK1FFRWpyODdveG5rLzFjMFRad2dIU05KRmRIRjBJcmdtTFJUeDlvbTd2c3lobE1BSUtuMndqN0R2dVJmNWpkNm9OczRZb21nbVhNWkp0REozampUaGlIRVJWNWZGdmh5QW9xODczZ2lTb1Y2RjVUWFRCOUVnSlQwTzI4UUtXdTBqL3MzMThBZjVHNHdnNTd5T2hOZmsyUjZqZ1E2aGxvNWpkZWN1N1RRUm9zRWxLN3E2Z2ZDS2ZIeldIeVlpaS9id2FyMERucUl5clN0M0Y1VnA2Yk53b1JHUW5HTXZIYnhxY3JnczhwbXVXZ2dkbEJrSUNUOHpSU3lyZml4a2FDdkY2bWZZa3NUdVFjK1VZYnN1QnEvaWJBS1RUNDZQcUhRdUhJWHEwSUcvQmwyWDV4Y0x3d0FTWU5sTHE4aUxKME1HbVUxSW9TQkZVUmtLdWwzZFJlbFRtSnIzclNld3IyRXJubVU0Uk1GRjhXdGRkVEhwOG5RLzBvMEtyNmFmZ2pKNFB6b1crZEVyZy9seE9RKzdjM0xkVVc4VmVTd1VLMSsyMUhIaStqc3F6Y1hNZGkvMHh5NjMreXQ5Wk55MHlQUExFY09QanJtS3NGeWJydGdKTkhpSXlISWhhb0kvWjNYam11Z042SE91aUNXakQ2RU9mYnZ6T2NMWDBEZ0diNSswRkhDNHF4UlFvbVpIMGVESU5vU21QS1MxU01obkFmTmpBZ1NCdXFLc3YxT0lSSTBTc3l0dG5lZDc5Tm54c2h1V0NoMHovdEpPS21kUXFVTWpqT3dwK05PQ211RzZ0WGE1ZDJwcG9GQUQ1ajhDckI1bmJVaGQzVVIwZHNzODdPVE1HLzkzUkN5NlFCbHlhM29FSDhpNUtNNnVSNE5sbmlRNVVab2dJWnFvcW1lNGRjZkkxemdUaHI1TVJOK2JxdUlpeEN5a3prSERXK0xmdm45Q2E5QU5nTEVGRDZKWEZ1S0VvK0hxQXlLRk1qang2azN2VkV4UjU1cWphOU9iTmp3NGRVa1VxNGs0KytCRXpxSW8wQXpRS2VJVU1RL3VwSjNhTkM1TTJ2ZzJQanlsV3FzUmM0aVFTTTRPZ3F2RnVRRmJVVmwrSGg5dXpLT0lwL1pCTkZxczFWZFdPai9NR0s5bjhFQnc0STVvcnk5TWtjSHRVbGIxRkJhVElZWWdISEtPb0F2TUVqSFlBV205LzJudVk1c1lOYnd3SzRoT3ZKRzdLSTI0VkRwRlBUZGVINzg3R09lNnFCQ1VOR1NGL2NvRTgvYm9FUWpqTlpXK1RvSytQNTFFOEMyTHlnMXJ6TVhEUVVkdkF6Y2FtcWVQMkFrRkxnOEVqYXFjVURYQTY1MVl2WXRWd3Z1YnV6SWh5blpJV3A0WGR1MmRreHBNVks0YTA3UVBIcUJCTUZPWUxITW91eUtwR0hEVXBwb2kzOUZPMzhEYVB0NWFmZS9JQjkzcWlvZXdSQnQ4M2U3Wlh3Mm1ZdnlXaUVqTkFIWUxSeEx0M3VHNlkrR0ZaNTR5Zm9sRmZMaUdBbUpONUd6YUVwRnBZdWpIZ1lEMjFKNWhLQVdBWnd4STR5c1paS0FRRXp6VFhBTi81SDNnQkxmUm5OTVJwVjBUSXVaVENDSzhsREYvb01lMFZMNGtjeDNtWEgzMkNRUTZOYkUvZ1QxdlFmcldzWjNYY2VMZ2ZoaTNJdE9hWXdIT25ZZ2VDZ2VBV3lrMzJxbGxFRVJKaUcrSGRpNFViYmZsYUg1cWxvc01teXhIbmNpbXFub0cyMWlJR296QUNmL3lqMDhuQmFBQWhYbEU5bEVIcGRnQnlxa2tYVktyeDJ4RVl0aXBCK0dJU3hzbnBFcHN2TC9mVEQwekZYNjFETUxnTkFmNmV5YjZYN0pXdXo5aHVGL21ZQlBTdEtqMHF4M0J1K1Y4YlNMc1ZIeXBSdFQyZnVPNloxYzNHazZoK0NuY1FhbzhpOFNzcTFnWXFDZlpFVEVqTGhLREVsMDBsVkFZK2hZTy80OGQ0US9weVVjWWk4WkZjSGE2VGg3aEpHRG05Qjl2M2U4OWhRVnFzM05HUzgyd09pTFR4QTdaazJNVFFENjRqOXE0eUtrak05WHFYSlFPamtCTmhLWkIzVDNFRVdIajRLa29OWEJBVkdkYnhKcFZrVjFBYW0xdCtRTlJpSWR1Z1I5b2hBUkUxOUFEV2xqZkVERjZnbkJKYWFPRWZ4Q2RGUDVtWGdEZ3A0SGFLLzlFYjRnSG9OeFJPaDZnWDh0d1RBQTQrTTM0bXVDN2s3OVRxeFNLNlpoejhFcWxoeUVzbzBSeFhGSkdjSFJmL3d3QmE4NVk3S3MrNlZ4SWlDVnVZR01lWkFVQ1ZabFc2MnpiYkcyOGxmU1BqUm1aRlJUSlJhd2hKamt2bFcxdjFOMEIxUm5nZFlqRTdIc1FvY2N0STVCQS84a3VsdkFHYm4zL0Fxcy9WWVdFZ1E0NTZHVFJqckxaNm5mdmRVampjS2FGakVuaEZJZXRxTWNTME9SdVpNQ0poakN1NE9RbjBnNnNkNjBZZUJWUVhtK0w5VThDbzVrNFd4YlcxMWttT2djTzhjcnB2dUFLL3BtOUVkVkhoS3JiQUFVM0FmMjRSZ3lKOUJYRXhrbmhvbXJvM2tXb1haLytYUHdMdk5aQkJVSnl5eDJuV0p2MkwzcjdkWWcxaHNldG1iTWtSMWJPcDZ4UThKckM1VGlOUVpEcURTUUZFN01rZHdBREZXTitCMzI1a0svY0ZFdGozWXB3N1hPbDZPS2lKYjRDVU9MSjY4UEg1QzVrL3BoZnd0QVd6eFBpMGc5Mnl6bTA5NFd0V3RZd3JMMjFpeEoxQmdhQ3FHWDgwenpmOUNpSjlFODBHbFFWSHpIY3l0SWhUWnZXeWwzdk0xR0hPOTdsNlkyQW5VWjB0dU9rUHo2eUV3UFhITVVRSlZvRkhFV0UxSmYxdkhRaVFDak9KTEtwZjZ0RlBMVFUzSkFwMUx5UFVCTm1BaDc4VUt3R1dRbTFqeThqZ1Y4TjFuM0hVTlV6QUxtL01jVi9URTd2TWZhOWpJdStJM3FHc1Rqdm80T0F5RkhSZjBBN25yY2JWS3NKeEYrSW1aTm5WUFliejFRWm5WWjJDZEkvOVJGS1VMTC9uQyt5NkxsWmNuT2VGTmEyWXFPd015K29MbzdxWXFiUGlGVXFGUFlpVHBkV2RQY211THpmTW44VXNNTElFQWVoRzVJR3phdlorbHVxeE9sWkFGVTFrSmNJWEQwaFRaN0pSWHR3bXpFeFQ4R3Z4eTYreFlsU09SV2FRQ0F2bnBZN29NL2c2VlBmeDlzRHVlWFNsd3hkNUF6RXN3dU5nSFpUTmVrUGN2RGpIV0xaY3dFOWRBMFBuanpxYTh3dVJNRU9sTDJiZG9JbmZJOC9SV2lUYUNxVzBGMWpyVitHcSs0OVEvQXVaTnJNaFFrbEdpdmdReVVteEdGczFzNGMrc0VyMzRxQVhaR0oyMi9ZR0ZiLzJPMlpIOCtCY21vQ0tkNk40elR4eTRhNlAzQU0zNzFVS1Mxa2J2RjRwaUdhMFBlMC8weTlNaTYyd2QrbDQ2QWtwN3dCRmJRaTN5K2VpSFRsZWxkaTlTelYvVU9WbTAzblVPc1Z4TTJjaHo0WDh6dTJMWS81UlJPKzZSeGVjYVdSUklTek5MdHI2Snp4dXl1Mm9maCs4eGtjOVplOTQ1OEhTVzlDNUZMRUh3emRQK2NtMHo4djdYbi9tVDdSVnFSdEFxdFQ1Q1RSZHgyaE91RXZQVGZzeWUwb25XRWhkdFVoNUU3MzI1QUVrTHlSb2IxTzcwNWJ4R0lhWUM2WGJ1YXRnUS9BaExvTmNCeFdJaE1uQ21GT0RMaHZRcFA2Ui9TcXVuRFJVaDh3MkdoeVVOcnUzR1RaMThzbTIyY0VGWU9TUXY1clg4U1c4VDZIcVlxenBLVlUzM1pMWFdmMFBtbjRqbUhpRjNIV2xZc2h2WFM2WWdJVkFMcmFHQjRpR1JEd2tsWFEvVjFjazlmYVJ6a0MwYWJRZXkxVmZ6QUZvMmhWeFBTdFBNUklRVjBTbFloYWVJNkJpcGF1R21rTmZ6UnlrcjBxZlk4eFQ0ekhYYXpMZUJLYnJOUmR0bDlCb0plcVhoVHp4dHk5T1FSV1hLRExIRG1EdGVzQWtXOU1WU09yOU5ReFVzSnh4eDBETjJPcUNTQ1M5amI1RVFuZlh1Ukw1NTJRaFFBb1gxYlFkYjJFc0Y5TkxoRFQ3VzM5STRncHJ2eHpaZTdwTjRVR0pjc0k4NVZaRWp3ZDJaeFJmNUhMNUhLZERNWldJdzR3ejVsaUdwcEpvWGluNnZ3SFBvR244bG14Mm5PL3djQnZlT2UrMHpKbVloUXNBcTNUaE42ZXpBOWYrMnpJTjNuZnQ0Tmk5NzlvUERlOTBnZkM5bWwyNGFod21TbFcyL0R1alVFckRwQm9pbEhiQTVGVnVON0VLdDBDcFpRdWVuYWFUNWlodjRBeUVqc0ZObTFwZTRoVklIYVI1enhlZ0JSb3d0QjBuc2lTcTU2bnU1KzBBQTBpc21JVG1td2l2YTlWTE1sQkFZYUdGWndWTnZ2N09pQ1pvMmJad2FzY251MXpKVlc3QWc5eXdYdWU3QW42RlVoMGRqYVd4c3FtNnVuaENKRDEyVnFxRDFYdEdSUG00SHRLTlo2TFZIV2x4R1p6Qk95VU5Fc3ZJOCtQZzVBSDVZUms2VlIzUUZTU2FGZzZzeFZ4S1RtME0rOW11cVhHYTRwVVM5SDZzZjVrQkJXQ2ptVEY5eXJoS3p0TzVrMjVpYXhvcjJscFdLRDZVYWdCY3Z1SnNWWDFiSGJaTkg2czdoeXF2Q1FFUG5IcHEzODZyRFRlay9GTUdvNHBoTFFUUkx5UjdLeFcrVXJ4TzJ0N3NqNFBtWmVjdGlSVkdWZk9rQ3ZqcVl2MnNoN0l2THVSaXI0a1JLNUlsM3FoeHlRRDVMNXREK1Mvdlg2Y0NJSEU1ZUxLVUlwdkRoNk9vdUYyQjc4TVZRZFkrQUJoRnN0YWRtcUN6ZDdWTjM3dURyNHZ2OEdKYU0yS25RRjgyOS9VQ0pYQ1pERmpMMkdSaDd4NWloTmhRbkZoS2NNOWg3dmhvcm1BT2ZtNkREeG5DTGljQWFBTGJwUWJDckxJbVVCTUgzcWVGWFZNejhYVFBKVkQwYkQ4RzZPRmJaaklYSm9zM2FvNmpHRmxrdldHRmVuTmJ6RFFYcWtvdFc0Zmt3bngxa2JiME5nK2Ivc3E1MVZPNnVnWnNZTW1DMi9vUFdOc2RGa0ZUNVFMdmxrdWkvdzhoR2dHQXcyNk1jOWpIWkQ0dmdQSkVNK0RjS200cXFzUTJEZHc2RDRtS0FOV0x3V2pGNFNhTXFLQWNKTzBkSzVmb2NwS1h5UWI0djZjMlRObjN1UWtydUsvMnliejR1WVRwNGFrYXhkRjVyVGNtWXZKam9zeXNLZjlBVmdXMHRpcVpyR3J3c0NmdGhFc3dHUGduL3BWS0VYU1Z6SGdSTlFScnAzblNSd0gyZ3AzcXFPOEgyejRlb2xGbEdOU3RGTjBrRGpwL1VoZXdEQkNJMUkvNUZLc29nbUFJeEJVazJ1U0kycnh6Q1VXRmxYdEEzVng0VnlZYzQwVkJjUVh3TUMrQzVUMEpTbjhHZkRVVDlWd3lGMVl0Nll0WFZsSE9TN0dIM05mTG1LeERIUFJoZndlQUpDRDBiQmNKazRMcG5aR3d4c2g4d1RtUE9VZnJYV1FpSSszb2tzbG1udzVSclRzSXJiblRXTEFMVWJrT21jc3BNOWhPOFFlSkNMa0ZQeENtaFZIbndtUHFlNlZSdHR5VER3clpUaFZ1dktpaVFxUEtSY3EyOEhlR0VEbkFPVnBDOWp2aDVqUkVwSGxQQ3oyakhqajMyclpWVjEvcU9MbGJ0QzU0MDd1eit2UFltaUhVMVM2eVVOV1dvcVFKWXBaRy9MYXlWR2MvU1ZrYWlmT2NiTFdvUFJaU09wL0lncGxjS1RMUDJwU1RoVm50WlBlb3FmbXliay9rNzBSQVpZejFYaUJLM096RkdGdU5yaEI1REttejRGNTZEQ0JOY2JBNGl5ZDFsTlJDbXpZdGtDSW5ucFVicHFFWVhEeFVtUndPQU4zbmxya3pZOFpWQ1J5THA2VUFScHl4VjJHU1B3T090YXZUcWhpVGUxNVh2SEVEQWhVeXdveUJGeE9Sa2h0R3BUUnlYbE1BTVVRMEp2QVBmSzNHbnFtR1g4cFNtQ2d0WHRISmprVHZqb1hUcURob3BPLzFYQlVhY3FyWDFoUTNnWmpEaW5weGNLS2tKYW5RMjRIdFJKUmRKT0E1TitnZTEyOXY3a3R4V0lycmRLUHFDT0szQWI3QkFJaUJROUQ3YTFKR1ZUaDFGWkd6WkRBQSs4L3BvM255eUlvWERhTGZhaTFMRTVxNkZGazdKZGNDNGJOY3lINklwOUJFV1RXeE1wakpKbExiYXFwcXZkc2lEYTlLNGJOdUlqdHpPRjZaQmtOaXMxVWVDWFVuWERMYlVsODl3bDB5MktDYkpUQWtTaDRwc0VkYTZibmNXUEczQnpLYTQvaVBKc2lNNnJ2M01lMnFQeFpYNEM3QmE3RWVrZ0p2WGRFMzVuR3p6cEtDSjBnVTlwSVdLNDBLZHBuV0dOWkVENEtYUU9KSUg3WURMUFhGQXlHbkpGNStxSk5nWi9QRzRqMUZ1dFpJTGpXOE5BYzZubzVLZXdxSCt4NEtiWjRobGpVZXU0MHRXaWhKclJQQUtuSmg2cDgxNm40ZTZjcytScG8vYWhWSTB0TFl2VWpyUm5XSndycUM0WUZabldCbXFWR28wd2VKWXQyVkM3L3FoQkcra1JUSjYwSXhEaGRPcEZGSENDYW9USlBBOHZUZ0ZvdzZVMGtkeXFpUWZpZnNpNDFoSWd1ZVdLOE4xSk1UdXNYVVlnSXNUT29XVlZWMUdYWWpGKys1ZXBhT1NGaUFqam1SU0Z5NTRvV3dVVldYVnVLTkVSalZPNmcraFVxc3dWKzRNRjdCNEZwUm0vaUMxMmMyM0RGUC9HYnAxVGZsR1FDeHExaDBrVndFaWp5NEU3amptVFJyV3VTV09SaDQ1N1Z0TFFET0JONkphMU0xWEFJRWJUeVhoWlc4L2o0NnpoSEVISEpzK2ppWHRWVmZBRmsrazRncFdCaHY1WUIrUDMvcStQY0lYbXIzMDd4Uis4QkFBa1ZDWVN3RW1wWU9NL0NQK2ZrQkhCSUNSL2NEZDk5WjRkYzd6L0RmWDI2Rks1SHh3enNNNW1UaXFaNkVEM1B0U3N1QTBibUJkRm5XZUtnS3ZVRFFVTWs0Y3E0MHhoa2dYaTUzYlN1M1ZYb0QzdGF5YXpsL1BDbUZLRC9EQ0VQQUV4YWFmbzNZZWo2WUQyUXM5dy9Xekc3ajV2SnhOQ21zb1J3bEhpbUtHdkJnakwxV0VGNzNEc3hHbGFyUWFOK2EwQWFZb2E0Tk01OFNsZWFGaGtRM2RmYXZjVE81ejFZcUhrZVNKU1JQNHpZY0FBV2ZQS2s2RnA5cno1bEMxV0FkbFptWjNmdVBRYWNwZmxlREl3OWo1UFNLUmIwZGFDTUNwYW8zbkZzYkZINlR4UUNRWVoxM3VwZzU2bE5MdnJoY1YwdWtPdEhabnJkUlZRcVQyVWZ2Z1NBc0JIVEJGZnNqVFJ4SGxvZThod3FVNXpCc3RhaUpDaVBCU052VnZDaEt3WGZEZTZlYXBpNXMraEtrUXVRVVl3a0tFT3N4STFuUXNad3dNVkpLeDNUeFFwRERqZTV4ZDk3WWJrM0trbXZXSWQ3cnhoUUFMZWJXNHZES0szVDYreDVidjd1bE1aWm5PeHM2ZzU3LzZERjNsc1FZcGtEaDhXcGJoWGt1dldxaFpIejlYdDdXcjRTYW5EbHNyS0RmakpRaEFKMER0cEdTay9pd3JJUk1NRWRjNC83blhwTUM0R3NLOGw5dUtFaUdPcHRMZFd4UEkrTFhYcmRPY2svRzhCbFc2SG1sd1dPbzhjVFlzWXIwaS9nWEdWSklMK2xkczBUNGlLTDdVcWsvUTUyOHkyVnZFSE9uTVlxM0tHejI4eXZBM0ZVSkk3d1lvakFPQVZQOFRuNlFVMWpSdDJhTVNyamNsTEU0NUFNaW5JVDR6dy9LNTNSald3bTVzYzFRWXpwZWhzVXVIMlNSVDRqRmNIMGV1aUR1a3RBQWhiSWxkVGVSOXhwSUV2VjJZUStFTkVJelBHWjZHSEZ1ZEdBZ2FzWmlFeCtuaUdLeDlmY2JJa3BvUGE1RHdWK0VKWTJCNFp0VXBZNU1wcVQzK0FpbHJxcXR4aStyOFNFWERqb3VGY0kyNSsrOHE1QXFyNVdNeGNiei9RRll3MVpmclBZT25DdnBRL1F4T1NSMlNnOXM5U2tIcjI3Y0xtYTI1Snc1MWplYkIzTFFGYjJVSjE3WHFVS3pPTUozQlI5ZDVoMnZQdWE1T1pvOXNMd1lEWE1xZmVBN3FGS3N5eUtxNHpWaXBjVUE0SUJ5ZjAySmZhOVVWUzFrcDVQVVlZcVVmYmtJbC9sRmFoVkJyR2x4NFBBYWpqN3FySDdmRDJ1MWhyRkJQY2p6Ulp2cXpmK0FNTVI1RGZxU1dGVGFENjhsWk9CNmdOUkZSVFVGNFdkdWVCWUYvV2txQVMwTmhmMUtUTnlkM3RPTkxhSy9nUFJkYlhzNUh5S1FleW5DZ1VJeGMrUTVqb1JHMkZhYUpBUENaV3hWdWk0WG00RVZjRnZCUSs0T2xvYmZkVGxkNnhwYzRRd3I4Y05kRUlNbTJwbW1nYjA2T0t0ZjBPaHpWMU9lWWV4SGhxVFJqRFJpUUVXRFFXV3pud0s0ZUtlY0Q5V1pGeFowSkEyK25LWmEyam93a1c0bGM1WGdkaDk2QmtCeUJzcVoyWEZPK0pOdWJQZWdORzRDOFI3RVBhK0l3c3ZudFBXNmY3dEYyNFZmZGxUcStxS01JZXBTUStjQ3o2ZVZSclJLWnluSmVjK1dhaGlrV2tXUGRFOERUVmlhZGhZWXh5OXFvZG5BWmo1NlExYVNqaUR4Q3dITWdaYXBUVTRSR3VTUVluRURKV0paMFlMV2dDblRqd3lkeVRFZjhoSEpySTZHRGtOQUJITXRHTmd2cFg3MFdOSFF3ZHdQVGFnSUVmb1U5RUc1RWJ3SEJBaThqSmJkTkFoaXlVZzdEbGJhejJPS0ZHSEsyTFVZRVN6Wm82dmczeFlzVUxRUWlPMUs0VWNZcFdXamxNMEJmOVdUS25RWlA5RlV5RjhkbUVXMTY2dytDMWljY2sydG8vNGdZdWdYYmtxVERCVDlobHNQL2NoMVFONjFEUytWRGd2RmhFQlZ5aXpCUSt0YXZJTThMWlFHd3RrL2JnSXAxV2ZBV0orRXdCaVFETWpkeEplQXM0STZGeTJRTlNmeXRWa1NobUM1dXBWT3V0ME10R0lSdGZUUTlYQVk0Q0VTRnNvSGQ5RVBTcFdKaW5pYzVNUTRRaUN6RlVzd0hrd0tLL2t1dm9sbmxQaHA5V2FHQTBSRU5rckpOLzdydG9seHU2WDcyclRyTzljZXFYVFg2RHdiUnJnb0lxU3F0QVZBM2h2NEorN3pyckZjaTZ2Sm9jZkRCR20wVy9lZWNWTFBnNzM2d3RRbFNjN3N3NmIyakNWWFFCaVE2Ti9VaHIxakw5Z3lqdFBpRmFCbFNQUEJqV2NIQUNld25kRTA5RDE4amEwZzZzWDlwT1JXRFY5UjlyWEhSbXovSk1wWFJxVlZrT1pLSWVrcUFrdmVTQ2FDQlZJUmw3WHlGVXhJcFpMUUx4ck1PN01nUU1ZSWdXU3E5UzBXU0g3RCtvMFljVnd6bExCdDhBTElESDdMaXl4OGpxT3o4ejM2alpyOFRxcUZ1dmZycmVpdU42d1U3OGYrc3FWRllQQk5GQmhZWWlWSjZMSk5XK2M1cXRpN1F1YnhGN3grejBxaThUSVFqeHdlN0ZheEt3SjZxSTBtWlk1S1hKWlR5MjI0ckp0cnFhNis0OFZDWEM0TENtcWN1SkIwNmhGelVHWUMzREpITmxmN3NFL3dwOEMvbnlFWWt1QStRNmQwNUlhNU5qUTRrak15cVhoSVpoZVVVbXdHdGZKUVZEeGtTMXFHSUZTTFpvS01pa3hicUVISDhtUHFxVTJXY3JVUEIvMDJtdFRXTXBqYXByRzVRNVRudzVqVnhrb3dHK3pJdGl5QTQzR0NiY2JYN3pEb1Y0OUlNZkMxQkJtMUJJeVlxU1R0NlVoK2ZlUDRIZXM4WmRZbVBBcVNBcWtERUlLNHJWelRVcTJMT0M2VHhqSUJlSjZHZnY5VFlHd2c3NXVFdGp2MUxVclV0cE9OZk5hQ1ZtSkRBbldtYXQrYUdrZGFwWllFOTd5UndXSFNWcHpsOGEzeW5NVzdsWUJvT2Rpb1lYSkUrYXZSQlR1cTVEMDluRVE5cWkrRi80b3RQNmFDNnRWSTBHOS8zTHN0dW56RjY3b2dZTjhvMDNJZDBjbDJrUU5QbEJPN3ptNGV1YzhxSWRrNW5pYytOM3VFektoRHVHUUtCYXdLSkVPNTRxMUVnS0NYclJqeTJ6YmtEZFBHdnRSellBWmk3REdEdlZsYWE5V3NXa1Z6cTA0Rno4NEFEWlFKSk5HTHlZNER6UkJIVnJ4Vkkzb1NnTS84alA5eGtNd0YveXJhZWs3K1RsejJsekcrSFQ0RllKZmJ1RFNtS1Z0bWNnNVkzelBGS3AzTm5QWkN1MDhUNjNHQndCWGE0NGgrOHBPQ2wrakZXN2RrUHAzYzFCR2d5d3pYanY5SDdYVklJS0h5TUpqNlZ2VGxCSDJEcFlocTh0U2FNTUxoOThXb1J2QkJlTkhQb1JxcHk1WjY4b1ArNFB0eW9odFlDaDNIN3JTSHVtV2Z6bFVRUEVGVjBJUTI4QlhQSHZ6QThnTnZNS1oydk9PRVErZFJnN0FneUUxVll5eTVUTzROZUNtSVh2Y2FkK0ZnY25ScERJQ2FQVmovUFZ3NWhNeXlhTnExcE9oZVpncGNRbjNrRzB0S1hMS1BHUmp2YlJUamdLbHhKWlZuVUozeEg4c2FoVEVXWnptVndJbjk5citzY1FJMzVtelRCQXd4a1BkRFdmWE44a1E4Qm95TmNyWFl3Szc5eXI5MnBkZkllSjVRUW43clpXOTQxZVdNSzhjaGQ3VXh3SW1hLzhwQStEc0FmMS9ZWXNGQXU3VkFDM3dnRGZSZXNxUGx4QzhtaFp5NVFJZzFZWjVJTkREVnM3eVlETGJtcW5RdHRoSUVidmh5MnZSVlBNaVN0NDFtRnQ0bElWVDk1dDFZdmI2MUFmKy9EbFh4NHNyUzlXWUhNd2c4by85K2xXb05ZWFZGeFBVTXJ3QXhhVmNOY1dIY2xhQi9RR0V1bXA5OTAvTnlwRW5UZklIZnMzMFdoWDVZbGlxRXZ0amMyVG5OS2hRWThEbEVoY0dtRnk5REFXWHFyd0l1YnM2VjZFRGswUk1KV0t5bEEveGRNb2YxeXpPcnViRURSL0JudERiUU05K0VpOUxuNis2R3pMUkpLeXFvUmRQV1FleVR2WE5ZdEtFODNscUpvWFBJdFVTMk1ndElOUEhHM1hqcjFqWis4K2RsaVdNVGl2Qk9wWlFWbkhSMUhoandFYlJMZ0ozeDBzNGcwSzFGSFFIUG5NcUNZbldyV3lWVDQ1WVFkUlhDTkRvZnYwa2t1ZWRGTWNqUkdTRWFOdkFBbytScDBEWGt1NnhNdzBtK0dpTExnRytZQlRlcHBIQ0llUFN4VGdWckU1V2FyS2JVd0JDRUdmckREdlFnY0g0OExLNGhGNldkWVoyMmNhV21ramRoWWJRc0RnWEZFYld6TjRFT3ZmYWFVc2h1WUZSRnhrS283bXdHZjFpMVpYSC91WmcwWW9IMEtJcUU1SHZTUlAvdG1nK0VBRHhUWG5wdmd1aUlRTWNJb0NuTS9YdFRKcnZuZDBmcWVWSjBuV0lYYm1CTkc1QmlGYzQ1dThOYUNUUnNnWEs3TFFqWDcrRTVMZE1vTmhmN1JuNm9RUG9VUHRMVitBS1FuL2ZiNjhMKzI1enF6dEh3SGkwWnMwNW85SkVUQ0grbUdQN3NrNFprM1pCSnV6T3NONXZBckZnT2M3K2dSQ25uNFV2Rk1IMGFDM3ZSaTVkRGRlWkwzNFpFUmx5SlVqOU9mTW41YjJSeWhDTnJMWUFWSzRjOW84WlNIdEFaRVdyZGlQRi9JcnR2UHM4YjlSRmhYWlJkTm1iVWNabkFqUUZiNWxNTm02RmdOQlczZ29GRElYWC9nTDgydFhmQk9TZHVLOUUwTVhpd3pub0lWQmJMdWlwbjhjSTMxV3B6Njk4RWRrM1ducUVINXlBaFgwbEE3OTlKTnRnRG9OTFFEMXByYmc2WUloMUk1MTdyMnhUSzNCTkFZek1KSitFbXEwM2N4Nlp2UWRBY0VXNGdKODV5T2ExS0ppOXFhOVhEcUVkMHVzQlM3TldVdUVja1FkcUZHSVl1Y0lNaUdiemRIQjMxT1NvalgzTVhNTXUxQ2tnMXhwWnY3Kzk0aWpLUzlZYWNsbUV3L25zaXlDR2hyN1VSdXFjdFBLNlEvMVR3emlyVmhCYmorWDduMXV6ekpPNEFtQ1NhMjFpVzBTdDd3WUd3YytNbW9WV0ozU1ZueG96L1NETXhnVXVlV242bVZqRHp2ZDVxQllVM1hhSXZRYS9Nem90WWRTTkk2MUhqU1dFVEduTm5iNFdZb2VZY21WbVFxcTVWZzVXNVJGUit5b3JjZDdCRmVsN29kQ2tDMnI3QVA3NDlRanBCZllyUk5naWtOS001UjFYMkpUdm51YTBvYW56MklaSDN0NE9OSU1JaWJlaVlSRDc0KzcvbHdGZER3Z0FWUWdOaStsUzFrTGN4RjQ3UDhOSlQ1ZTVRMnVyQ2xYM1labjc4OTA3c3I0ME9xdTZhb0lMNG50N290SHJwM3lhS3YySnd3STN5MWZ6ckNnZGxWWjBjRS9QUCtlUXcySGtxUDNuR01OWEI0SjRkYVUxaHlySS9YMVhNc0pibnFCSVgvaWwvZmtPMkYzZ05NSHJ6aHFpMENZVFJEMjJWUnBYL0NrVUF4SEZHTG1penJndm5YNUppQTFGdjN1TXlGN0I1SkN0YVZYci9OR3hMWHdoS0MzWmNnRlorVHlmOEIzS0haamk1NzRLc2NZdmtsMnBROWp1YUxUdk5OMTRZK0JWODlTUXoxeVBxRDh1bXFyNy9IQ1Nwbkw2RHU5NzBidlFzbk91V3JzdU5UVHdwT2NqUWZWclF2N0JqMDYwZHJlN0JhRi9ZQmR3Qnp5SVhsRDdiQmxNbVYzdFJEM3RobEw2QlhEU1ErTytxSHEwN0dGOEFHY2pycWRSOHRwcFBxSzBPUzNJaDRZSDdaajVVNXNUZGNGak9lcFMyRkJ2d2hQZWk3cmk0dmdQbExqZ2ZFcXdudk5xQjJ6bEF6M0NQb090Rk12WmJRc2lOL1h6U3lFK0ZpZVpWUkM4VTBhaDBhRittVkZEUVFNckVRdU5WR2dVemFhN0FhSjhxSVZuYk1sUHJvWFZmR1dVMGVnNzA5WVg4VFNQc1hUeCtzMzNIMTRST3hxcTh4NVJXMnBmV1ArOW5OYmFCRjBQR2hJVklBMm0zSzJPc0V1cVAxTHQ4cnF2MndqTTZ1cEEyMXROaFk4dnRYeW4yenNmcXN3UDdubU85QXZmeUlMYTJWeVo2WnQ0emU0WVdSSGZGU2VtVHlkT0R3SmF5c0M2a2k3aEt5S1VQajdOblFkaDJQZkJkUHppSCt4eVYwZE1Ec2RYbFRvSnpheWxXMzVDTXlsd042MTNRaW5Ud3JKM0lrUUQxa3U4M1pkbTEvSi82dnJFNWdMbmNlY0V4NzlIZUVMRGxOM3p2K2ZHbGx2SENYRThoU2pmVEpDaFBldlR1elR3SnJaQngxR2hyWWh6d3JybmRNUlU0YXJ1VUJCcUxwek02SmRqUkxkaVZuTjdsUDEvWEZiODBjdUtoSEg1ODN5Zlg3TlQveUFEQjRBditmSkoxWUpCUUNMejdhU3V3cm4vamY5aUZUL1RsTEk4TVlNNFYza3VpM0dnaGFnUldlb3JqNGFvancvTG11WHRFRDJ5ZHJtdDZtR255M3J1YXltdExPdHM3c3puVFVWOS93WEtpYkJYMXQvQWhyaEViSVlkYmQ5OHNGbVhKQXJmNjFGa1pucklmN2dpUHBvWDZUN0VzVDJlZHBMZUg3NndXc0pkUDZ3NnlCUi9uZVpJZUhPNUZaWEdlSXR1azZ3UEdza1llTm4zNlVQTTFTZTkreG1ZWHpDUnNCa3ZSUUJJRnRXNWRwd0JoeGhjUkdYVXFEc3lmQTRqV3NaV1E0NVF6TXFuRVNKcitXQWpBZmc3b3Q3WVFpMnI3UlA5dnVxRE1Gdkk0RXl4dTlMYnYrODJ0WlpkTHFBTDJBNU9pamVWV3I3cFB6TGp2NUdzS1dsSVBSRU5YRDlIdlJ2SEV1NE9QZzc5Qm5mZjVZNnZIR1AzNmphRFN0cGZVa051SUtTL3l3ZndScUQ2SUJYbzlEMGpEQThNWjJ5aGJ5a1phNDRkOFdkMDBPVFllZC95WVlpcElTYXU5VGZkNTd1YVJmaVYxcXRRcGhVOUtXcUdNWjFsK2VSTW9icUxQUHFmdFJ4Y2YveUwza3ZwSXRwYzZyMDJRKzNsQWRKdDFRdnN2ZGpRZXdvN3JwdmEwdC9Wd082OFFCbmpIV20yczlTM1BoZXB6SkpRenRIT043RWVob3FKQzc5R3VUWHczM0xnTG9mWnJRRm00TDFVQ2lBMXVJeEdxTHFILzlsTjhteTNqLy9LOEkxemxzeE5GVXlyKzFvN2FFbDJ4MlJkbU54STF3MHZMN1F3TERMVDVjRXI1djE3MUFneEhqTkUrazdtVlNFWXFmdE5QWUZtY2h2SmtGNER6THpEaFNLVVlJZXlIZjNXQkxkelI4ZllYWTN2TXduUUJlcU9neTdqdmQ5ZW5Hb292ditzc2lkUS9NME0vRGlZYW5kNHNjSkhHbDB1eFlRZktFcjZNLzlsZEgxZ2UyaS9mSDBzZzlZUGQrcVMrWmtBL0w0bzZxdTlyTGVPYmJMME1kRzBsSlBsZFZiSkQyc3RyUERxNWJqTDhqMjY5Q3RkNUhFOERaa1FPS1huU2o3YlhQT0g0VnZxYi9MSzdzWVkvSzcxZ2JCZ09hZ3dlUUJoQUQrQk1oakhHNjQ3VGR6YmJ4cldvWGVFTDlkcitzUlV2K3pDRE1RcVV1NTQ5ZUhZOCs3MVZwQU1qWk8xZmlWbXFaZ3RMWSttbE41RDRCRjFCUUEyaVNhMUZpL013UHZPbVNtcFFZUVhjTFBkSlJrTVpIVmxUZUNKRWRJcERYczZ0MWxkQ1U5Tjh3UjZaSjdsaFlGK0xvT0ZqaWZLWXBpOTcraWpsNkxhOVFOUExlU3ZwbndzZERmbkRoYktjT2Z2aXBON1FPUFNHMmRCNUFkbUpZdlNTeXhLZDRvd2VXcXFPR1A0YWl0YVpURDJuKzVJekFxWkIyck9hMTVQQ0gyTTlHc2loUWFmc1NCNlNNUnhIUjFCVlkrSmZTaXBBdTR4amxIeGd5ZktnNTBqUlBrVzRZeUtrWDN5UnVubDNXdlh2dkh2cnNlZlFNc2FhVTFPQitPZXdvWFJOWGZOWFhQWDNEVjN6VjF6MTl3MWQ4MWRjOWZjTlhmTlhYUFgzRFYzelYxejE5dzFkODFkYzlmY05YZk5YWFBYM0RWM3pWMXoxOXcxZDgxZGM5ZmNOWGZOWFhQWDNEVjN6VjF6MTl3MWQ4MWRjOWZjTlhmTlhYUFgzRFYzelYxejE5dzFkODFkYzlmY05YZk5YWFBYM0RWM3pWMXoxOXcxZDgxZGM5ZmNOWGZOWFhQWDNEVjN6VjF6MTl3MWQ4MWRjOWZjTlhmTlhYUFgzRFYzelYxejE5dzFkODFkYzlmY05YZk5YWFBYM0RWM3pWMXoxOXcxZDgxZGM5ZmNOWGZOWFhQWDNEVjN6VjF6MTl3MWQ4MWRjOWZjTkY5NzYrdlMvRFYzMjl1WlNXMTVqUjlOdnZZTmQvRTc4N3F5MmRnVzgvOFpUOTIxdHlyN1ZlVWZxdUlxc1ZzOWZidklWL3UrdCsvS3o5Zi9sL3puUC8vei8vNTArNVdUeEpUK2xmN2lPMU5UbWYxWkljL0xYLyt4OWNpMzhtVVY1NWs4OVBYMzBNUFd3MThydGk1OHY4NHdrdW5lWkZGblozdWY0QVZzMXY5OVYvLzl3Ly9kL0Z2bXpsZCsvVDlkVjIrN3JyNXBzM21jV1QvMnhJeHQ0djc0SGo1eWp3bnZMNHM0ODR2empsd3Q5NnU4TXY2K2R5WjU0cTl3YnRmKzQvOEJhdVY1enhZUEFRQT0ifQ== -->
 <div data-pagedtable="false">
@@ -2824,31 +2803,3479 @@ sentiments %&gt;%
 <p>With my well-trained eye, I notice that “character names designating who’s speaking” are all set in all-caps. Given this material property, we can insert a column into the data that states, for each word, who is speaking it.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yIChpIGluICgxOm5yb3coc2VudGltZW50cykpKXtcblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yIChpIGluICgxOm5yb3coc2VudGltZW50cykpKXtcbiAgbXl3b3JkID0gc2VudGltZW50c1tpLF0gJT4lIHB1bGwod29yZClcbiAgaWYgKG15d29yZCA9PSB0b3VwcGVyKG15d29yZCkpe1xuICAgIHNwZWFrZXIgPSBteXdvcmRcbiAgfVxuICBzZW50aW1lbnRzJHNwZWFrZXJbaV0gPSBzcGVha2VyXG59XG5gYGAifQ== -->
 <pre class="r"><code>for (i in (1:nrow(sentiments))){
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBtZXNzYWdlOlxuVW5rbm93biBvciB1bmluaXRpYWxpc2VkIGNvbHVtbjogYGNoYXJhY3RlcmAuIFxuIn0= -->
-<pre><code>Warning message:
-Unknown or uninitialised column: `character`. </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBteXdvcmQgPSBzZW50aW1lbnRzW2ksXSAlPiUgcHVsbCh3b3JkKVxuICBpZiAobXl3b3JkID09IHRvdXBwZXIobXl3b3JkKSl7XG4gICAgc3BlYWtlciA9IG15d29yZFxuICB9XG4gIHNlbnRpbWVudHMkY2hhcmFjdGVyW2ldID0gc3BlYWtlclxufVxuYGBgIn0= -->
-<pre class="r"><code>  myword = sentiments[i,] %&gt;% pull(word)
+  myword = sentiments[i,] %&gt;% pull(word)
   if (myword == toupper(myword)){
     speaker = myword
   }
-  sentiments$character[i] = speaker
+  sentiments$speaker[i] = speaker
 }</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiVW5rbm93biBvciB1bmluaXRpYWxpc2VkIGNvbHVtbjogYGNoYXJhY3RlcmAuXG4ifQ== -->
-<pre><code>Unknown or uninitialised column: `character`.</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiVW5rbm93biBvciB1bmluaXRpYWxpc2VkIGNvbHVtbjogYHNwZWFrZXJgLlxuIn0= -->
+<pre><code>Unknown or uninitialised column: `speaker`.</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VudGltZW50cyAlPiUgXG4gIHNsaWNlKDIwMDo0MDApICU+JSBcbiAga2FibGUoKVxuYGBgIn0= -->
+<pre class="r"><code>sentiments %&gt;% 
+  slice(200:400) %&gt;% 
+  kable()</code></pre>
+<!-- rnb-source-end -->
+<p>
+<!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImtuaXRfYXNpcyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
+
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+gutenberg_id
+</th>
+<th style="text-align:left;">
+title
+</th>
+<th style="text-align:right;">
+line
+</th>
+<th style="text-align:left;">
+word
+</th>
+<th style="text-align:left;">
+speaker
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+Third
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+or
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+fourth
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+or
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+fifth
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+borough
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+I’ll
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+answer
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+him
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+by
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+law
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+I’ll
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+not
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+budge
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+an
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+inch
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+boy
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+let
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+him
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+come
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+and
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+kindly
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Lies
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+down
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+on
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+ground
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+and
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+falls
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+asleep
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+Horns
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+winded
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+Enter
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:left;">
+SLY
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+from
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+hunting
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+with
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+Huntsmen
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+and
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+Servants
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+Huntsman
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+charge
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+thee
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+tender
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+well
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+my
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+hounds
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+Brach
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+Merriman
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+poor
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+cur
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+is
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+emboss’d
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+And
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+couple
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+Clowder
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+with
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+deep
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+mouth’d
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+brach
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+Saw’st
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+thou
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+not
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+boy
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+how
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+Silver
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+made
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+it
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+good
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+At
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+hedge
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+corner
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+in
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+coldest
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+fault
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+would
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+not
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+lose
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+dog
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+for
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+twenty
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+pound
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+FIRST
+</td>
+<td style="text-align:left;">
+FIRST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+Why
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+Bellman
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+is
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+as
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+good
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+as
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+he
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+my
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+lord
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+He
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+cried
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+upon
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+it
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+at
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+merest
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+loss
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+And
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+twice
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+to
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+day
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+pick’d
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+out
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+dullest
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+scent
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+Trust
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+me
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+take
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+him
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+for
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+the
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+better
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+dog
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+Thou
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+art
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+fool
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+if
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+Echo
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+were
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+as
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+fleet
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+would
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+esteem
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+him
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+worth
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+dozen
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+such
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+But
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+sup
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+them
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+well
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+and
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+look
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+unto
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+them
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+To
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+morrow
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+intend
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+to
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+hunt
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+again
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:left;">
+FIRST
+</td>
+<td style="text-align:left;">
+FIRST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:left;">
+will
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:left;">
+my
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:left;">
+lord
+</td>
+<td style="text-align:left;">
+I
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+Sees
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+Sly
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+What’s
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+here
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+One
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+dead
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+or
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+drunk
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:left;">
+See
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:left;">
+doth
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:left;">
+he
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:left;">
+breathe
+</td>
+<td style="text-align:left;">
+LORD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+119
+</td>
+<td style="text-align:left;">
+SECOND
+</td>
+<td style="text-align:left;">
+SECOND
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+119
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+He
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+breathes
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+my
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+lord
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+Were
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+he
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+not
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+warm’d
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+with
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+ale
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+This
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+were
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+bed
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+but
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+cold
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+to
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1508
+</td>
+<td style="text-align:left;">
+The Taming of the Shrew
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+sleep
+</td>
+<td style="text-align:left;">
+HUNTSMAN
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- rnb-html-end -->
+ <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbk5BXG5gYGAifQ== --></p>
+<pre class="r"><code>NA
+NA</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGV4dCBBbmFseXNpcyBOb3RlYm9vayIKYXV0aG9yOiBMYXJzIEhpbnJpY2hzCmRhdGU6IDE0LU9jdC0yMDIwCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyIHNldHVwfQppZiAoIXJlcXVpcmUocGFjbWFuKSkgaW5zdGFsbC5wYWNrYWdlcygicGFjbWFuIikKbGlicmFyeShwYWNtYW4pCnBfbG9hZChyaW8sIHRpZHl2ZXJzZSwgdGlkeXRleHQsIGtuaXRyLCBmbGV4dGFibGUsCiAgICAgICBrYWJsZUV4dHJhLAogICAgICAgdGV4dHJlYWRyLCBndXRlbmJlcmdyLCBqYW5pdG9yKQpgYGAKCiMjIERpZ2l0YWwgdGV4dCBhbmFseXNpczogYSBsb29rIGF0IHRoZSB0b29sYm94IAoKSGF2aW5nIHJlYWQgW3RoZSBOWVQgcGllY2VdKGh0dHBzOi8vd3d3Lm55dGltZXMuY29tLzIwMjAvMTAvMTIvc3R5bGUvc2VsZi1jYXJlL3NvY2lhbC1tZWRpYS0uaHRtbCkgYWJvdXQgc29jaWFsIG1lZGlhIHRleHQgYW5hbHlzaXMsIGFuZCBwZXJoYXBzIGZyb20geW91ciBvd24gbGlmZSBpbiB0aGlzIGRpZ2l0YWwgd29ybGQgb2Ygb3VycyEhLCB5b3UgaGF2ZSBhdCBsZWFzdCBoZWFkIGFib3V0IHNvbWUgb2YgdGhlIG1ldGhvZHMgdGhhdCBhICJjb21wdXRhdGlvbmFsIHNvY2lvbGluZ3Vpc3QiIG9yIGEgImRpZ2l0YWwgaHVtYW5pc3QiIG1pZ2h0IGFwcGx5IHRvIHRleHQuIAoKIyMjIFNlbnRpbWVudCBhbmFseXNpcwoKIyMjIyAiUG9zaXRpdmUiIHZlcnN1cyAibmVnYXRpdmUiIHdvcmRzCgohW1NlbnRpbWVudCBhbmFseXNpczogbiBwb3Mgdi4gbiBuZWcgcGVyIHRleHQuXShzYTEucG5nKQoKIVtTZW50aW1lbnQgYW5hbHlzaXM6IGNvbXBhcmluZyBwb3M6bmVnIHJhdGlvcy5dKHNhMi5wbmcpCgohW1NlbnRpbWVudCBhbmFseXNpczogc3BsaXQgZWFjaCB0ZXh0IGludG8gMTAwIHNsaWNlcywgdGhlbiB0cmFjayBzZW50aW1lbnQgY3VydmUuXShzYTMucG5nKQoKIVtTZW50aW1lbnQgYW5hbHlzaXM6IHNhbWUgYXMgYWJvdmUsIGJ1dCB3aXRoIGFjdCBib3VuZGFyaWVzIG1hcmtlZC5dKHNhNC5wbmcpCgojIyMjIFRhZyBmb3IgbW9yZSB0aGFuIDIgZW1vdGlvbnMKCiFbU2VudGltZW50IGFuYWx5c2lzOiBwb3MsIG5lZywgYW5kIDggb3RoZXIgc2VudGltZW50IGNhdGVnb3JpZXMuXShzYTUucG5nKQoKCgojIyMgVGFnIGZvciBwYXJ0cyBvZiBzcGVlY2gKCiFbUGVubiBUcmVlYmFuayBQT1MgdGFnc2V0XShwb3NfdGFnc2V0LnBuZykKCiMjIyBUYWcgZm9yIHNlbWFudGljIGNsYXNzZXMgCgohW1VuaXZlcnNhbCBzZW1hbnRpYyB0YWdzZXRdKHNlbWFudGljX3RhZ3NldC5wbmcpCgojIyBTdGFydCBieSBsb2FkaW5nIG91ciBkYXRhCgpGaXJzdCB3ZSdsbCBnZXQgYW4gaW52ZW50b3J5IG9mIGFsbCB0aGUgLkRPQ1ggZmlsZXMgaW4gb3VyIHByb2plY3QgZGlyZWN0b3J5LgoKYGBge3J9Cih0ZXh0ZmlsZXMgPC0gbGlzdC5maWxlcyhwYXR0ZXJuID0gIi5kb2N4IikpCmBgYAoKVGhlIHNlY29uZCBmaWxlIGhhcyBtb3JlIGZvcm1hdHRpbmcgYW5kIG1heSwgZm9yIHRoZSB0aW1lIGJlaW5nLCBiZSBtb3JlIHVzZWZ1bC4gV2UnbGwgcmVhZCBpdCBpbi4gSGVyZSBpcyB0aGUgdG9wIG9mIGl0cyBjb250ZW50LgoKYGBge3J9CmYgPC0gcmVhZF9kb2N4KHRleHRmaWxlc1syXSkKZiAlPiUgaGVhZCgxMCkKYGBgCgpIZXJlIGl0IGlzLCBjb252ZXJ0ZWQgdG8gdGFidWxhciBmb3JtYXQuCgpgYGB7cn0KZiA8LSAKICBmICU+JSAKICBlbmZyYW1lKCkgJT4lIAogIHNlbGVjdChsaW5lID0gMikgJT4lIAogIG11dGF0ZShmaWxlID0gdGV4dGZpbGVzWzJdKQpmICU+JSAKICBoZWFkKDEwKSAlPiUgCiAga2JsKCkgJT4lIAogIGthYmxlX3N0eWxpbmcoYm9vdHN0cmFwX29wdGlvbnMgPSAic3RyaXBlZCIsIAogICAgICAgICAgICAgICAgZnVsbF93aWR0aCA9IEYsIAogICAgICAgICAgICAgICAgcG9zaXRpb24gPSAibGVmdCIpIApgYGAKCiMjIE5hcnJvd2luZyBkb3duIG91ciBpbnRlcmVzdAoKSSBoYXZlIGp1c3QgcmVjZWl2ZWQgdGhlIGxhdGVzdCBub3RlcyBmcm9tIGNsYXNzOiB0aGUgaW50ZXJlc3Qgc2VlbXMgdG8gYmUgaW4gdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiB2ZXJzZSBhbmQgcHJvc2UgKmNyb3NzZWQgd2l0aCogYW4gaW50ZXJlc3QgaW4gY2hhcmFjdGVyLiBJIGludGVycHJldCB0aGlzIHRvIG1lYW4gdGhhdCB0aGVyZSBhcmUgY2hhcmFjdGVycyB0aGF0IGFwcGVhciBib3RoIGluIHZlcnNlIGFuZCBpbiBwcm9zZSBzZWN0aW9ucywgYW5kIHdlIDxtYXJrPndhbnQgdG8ga25vdyBob3cgdGhlIGxhbmd1YWdlIGFzc29jaWF0ZWQgd2l0aCBlYWNoIGNoYXJhY3RlciBkaWZmZXJzIGZyb20gdmVyc2UgdG8gcHJvc2UuPC9tYXJrPgoKSW4gdGhlIHRleHQgc2FtcGxlcyBJIGhhdmUsIGNoYXJhY3RlciBzcGVlY2ggaXMgbm90IG1hcmtlZC4gV2UgbWlnaHQgYmUgYmV0dGVyIG9mZiBpZiB3ZSBwdWxsICpUYW1pbmcgb2YgdGhlIFNocmV3KiBmcm9tIHd3dy5ndXRlbmJlcmcub3JnLgoKTHVja2lseSB0aGVyZSBpcyBhbiBSIG1vZHVsZSB0aGF0IGludGVyZmFjZXMgd2l0aCB0aGUgR3V0ZW5iZXJnIGFyY2hpdmVzLiBJdCBpcyBjYWxsZWQgYGd1dGVuYmVyZ3JgLiBJIHdpbGwgcHVsbCB0aGUgd2hvbGUgdGV4dCBmcm9tIHRoZXJlLiAKCmBgYHtyfQpzaGFrZXNwZWFyZSA8LSAKICBndXRlbmJlcmdfd29ya3MoYXV0aG9yID09ICJTaGFrZXNwZWFyZSwgV2lsbGlhbSIpIAoKc2hha2VzcGVhcmUgICAgICAgICAgICAgICAgICAgICU+JSAKICBtdXRhdGUoZW50cnkgPSByb3dfbnVtYmVyKCkpICU+JSAKICBzZWxlY3QoZW50cnksIHRpdGxlKSAgJT4lIAogIGtibCgpICU+JSAKICBrYWJsZV9zdHlsaW5nKGJvb3RzdHJhcF9vcHRpb25zID0gInN0cmlwZWQiLCAKICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGLCAKICAgICAgICAgICAgICAgIHBvc2l0aW9uID0gImxlZnQiKSAKYGBgCgpTbyBvdXIgdGV4dCBpcyB0aGVyZSBhbmQgYXZhaWxhYmxlLCBhdCBpbmRleCBuby4gMTAuIAoKYGBge3J9CklEcyA8LSAgc2hha2VzcGVhcmVbYygxMCksXSRndXRlbmJlcmdfaWQKCnNoYWtlc3BlYXJlICU+JSAKICBmaWx0ZXIoZ3V0ZW5iZXJnX2lkICVpbiUgSURzKSAlPiUgCiAgc2VsZWN0KGd1dGVuYmVyZ19pZCwgdGl0bGUpCmBgYAoKTGV0J3MgZG93bmxvYWQgdGhlIHBsYXkgYW5kIHN0b3JlIGl0IGluIGFuIFIgb2JqZWN0LiBJIHdpbGwgY2FsbCBpdCBgcGxheXNgIChwbHVyYWwgaW4gY2FzZSB3ZSBhZGQgbW9yZSB0ZXh0cyBvciBzb21ldGhpbmcuKQoKYGBge3J9CnBsYXlzIDwtIGd1dGVuYmVyZ19kb3dubG9hZChJRHMsIG1ldGFfZmllbGRzID0gInRpdGxlIikKCnBsYXlzICU+JSBhc190aWJibGUoKQpgYGAKCkknbGwgY29udmVydCB0aGUgZGF0YSB0byBvbmUtd29yZC1wZXIgcm93IG5vdy4gSXQncyB0aGUgZm9ybWF0IHdlIG5lZWQgZm9yIGFueSBvZiB0aGVzZSBhbmFseXNlcy4KCmBgYHtyfQpzZW50aW1lbnRzIDwtIHBsYXlzICU+JQogICNncm91cF9ieSh0aXRsZSkgJT4lCiAgbXV0YXRlKGxpbmUgPSByb3dfbnVtYmVyKCkpICU+JSAKICB1bm5lc3RfdG9rZW5zKHdvcmQsIHRleHQsCiAgICAgICAgICAgICAgICB0b19sb3dlciA9IEYpIAoKc2VudGltZW50cyAlPiUgCiAgc2xpY2UoMTUwOjE5MCkgJT4lIAogIGtibCgpICU+JSAKICBrYWJsZV9zdHlsaW5nKGJvb3RzdHJhcF9vcHRpb25zID0gInN0cmlwZWQiLCAKICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGLCAKICAgICAgICAgICAgICAgIHBvc2l0aW9uID0gImxlZnQiKSAKYGBgCgoKV2l0aCBteSB3ZWxsLXRyYWluZWQgZXllLCBJIG5vdGljZSB0aGF0ICJjaGFyYWN0ZXIgbmFtZXMgZGVzaWduYXRpbmcgd2hvJ3Mgc3BlYWtpbmciIGFyZSBhbGwgc2V0IGluIGFsbC1jYXBzLiBHaXZlbiB0aGlzIG1hdGVyaWFsIHByb3BlcnR5LCB3ZSBjYW4gaW5zZXJ0IGEgY29sdW1uIGludG8gdGhlIGRhdGEgdGhhdCBzdGF0ZXMsIGZvciBlYWNoIHdvcmQsIHdobyBpcyBzcGVha2luZyBpdC4gCgpgYGB7cn0KZm9yIChpIGluICgxOm5yb3coc2VudGltZW50cykpKXsKICBteXdvcmQgPSBzZW50aW1lbnRzW2ksXSAlPiUgcHVsbCh3b3JkKQogIGlmIChteXdvcmQgPT0gdG91cHBlcihteXdvcmQpKXsKICAgIHNwZWFrZXIgPSBteXdvcmQKICB9CiAgc2VudGltZW50cyRzcGVha2VyW2ldID0gc3BlYWtlcgp9CgoKYGBgCgoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGV4dCBBbmFseXNpcyBOb3RlYm9vayIKYXV0aG9yOiBMYXJzIEhpbnJpY2hzCmRhdGU6IDE0LU9jdC0yMDIwCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyIHNldHVwfQppZiAoIXJlcXVpcmUocGFjbWFuKSkgaW5zdGFsbC5wYWNrYWdlcygicGFjbWFuIikKbGlicmFyeShwYWNtYW4pCnBfbG9hZChyaW8sIHRpZHl2ZXJzZSwgdGlkeXRleHQsIGtuaXRyLCBmbGV4dGFibGUsCiAgICAgICBrYWJsZUV4dHJhLAogICAgICAgdGV4dHJlYWRyLCBndXRlbmJlcmdyLCBqYW5pdG9yKQpgYGAKCiMjIERpZ2l0YWwgdGV4dCBhbmFseXNpczogYSBsb29rIGF0IHRoZSB0b29sYm94IAoKSGF2aW5nIHJlYWQgW3RoZSBOWVQgcGllY2VdKGh0dHBzOi8vd3d3Lm55dGltZXMuY29tLzIwMjAvMTAvMTIvc3R5bGUvc2VsZi1jYXJlL3NvY2lhbC1tZWRpYS0uaHRtbCkgYWJvdXQgc29jaWFsIG1lZGlhIHRleHQgYW5hbHlzaXMsIGFuZCBwZXJoYXBzIGZyb20geW91ciBvd24gbGlmZSBpbiB0aGlzIGRpZ2l0YWwgd29ybGQgb2Ygb3VycyEhLCB5b3UgaGF2ZSBhdCBsZWFzdCBoZWFkIGFib3V0IHNvbWUgb2YgdGhlIG1ldGhvZHMgdGhhdCBhICJjb21wdXRhdGlvbmFsIHNvY2lvbGluZ3Vpc3QiIG9yIGEgImRpZ2l0YWwgaHVtYW5pc3QiIG1pZ2h0IGFwcGx5IHRvIHRleHQuIAoKIyMjIFNlbnRpbWVudCBhbmFseXNpcwoKIyMjIyAiUG9zaXRpdmUiIHZlcnN1cyAibmVnYXRpdmUiIHdvcmRzCgohW1NlbnRpbWVudCBhbmFseXNpczogbiBwb3Mgdi4gbiBuZWcgcGVyIHRleHQuXShzYTEucG5nKQoKIVtTZW50aW1lbnQgYW5hbHlzaXM6IGNvbXBhcmluZyBwb3M6bmVnIHJhdGlvcy5dKHNhMi5wbmcpCgohW1NlbnRpbWVudCBhbmFseXNpczogc3BsaXQgZWFjaCB0ZXh0IGludG8gMTAwIHNsaWNlcywgdGhlbiB0cmFjayBzZW50aW1lbnQgY3VydmUuXShzYTMucG5nKQoKIVtTZW50aW1lbnQgYW5hbHlzaXM6IHNhbWUgYXMgYWJvdmUsIGJ1dCB3aXRoIGFjdCBib3VuZGFyaWVzIG1hcmtlZC5dKHNhNC5wbmcpCgojIyMjIFRhZyBmb3IgbW9yZSB0aGFuIDIgZW1vdGlvbnMKCiFbU2VudGltZW50IGFuYWx5c2lzOiBwb3MsIG5lZywgYW5kIDggb3RoZXIgc2VudGltZW50IGNhdGVnb3JpZXMuXShzYTUucG5nKQoKCgojIyMgVGFnIGZvciBwYXJ0cyBvZiBzcGVlY2gKCiFbUGVubiBUcmVlYmFuayBQT1MgdGFnc2V0XShwb3NfdGFnc2V0LnBuZykKCiMjIyBUYWcgZm9yIHNlbWFudGljIGNsYXNzZXMgCgohW1VuaXZlcnNhbCBzZW1hbnRpYyB0YWdzZXRdKHNlbWFudGljX3RhZ3NldC5wbmcpCgojIyBTdGFydCBieSBsb2FkaW5nIG91ciBkYXRhCgpGaXJzdCB3ZSdsbCBnZXQgYW4gaW52ZW50b3J5IG9mIGFsbCB0aGUgLkRPQ1ggZmlsZXMgaW4gb3VyIHByb2plY3QgZGlyZWN0b3J5LgoKYGBge3J9Cih0ZXh0ZmlsZXMgPC0gbGlzdC5maWxlcyhwYXR0ZXJuID0gIi5kb2N4IikpCmBgYAoKVGhlIHNlY29uZCBmaWxlIGhhcyBtb3JlIGZvcm1hdHRpbmcgYW5kIG1heSwgZm9yIHRoZSB0aW1lIGJlaW5nLCBiZSBtb3JlIHVzZWZ1bC4gV2UnbGwgcmVhZCBpdCBpbi4gSGVyZSBpcyB0aGUgdG9wIG9mIGl0cyBjb250ZW50LgoKYGBge3J9CmYgPC0gcmVhZF9kb2N4KHRleHRmaWxlc1syXSkKZiAlPiUgaGVhZCgxMCkKYGBgCgpIZXJlIGl0IGlzLCBjb252ZXJ0ZWQgdG8gdGFidWxhciBmb3JtYXQuCgpgYGB7cn0KZiA8LSAKICBmICU+JSAKICBlbmZyYW1lKCkgJT4lIAogIHNlbGVjdChsaW5lID0gMikgJT4lIAogIG11dGF0ZShmaWxlID0gdGV4dGZpbGVzWzJdKQpmICU+JSAKICBoZWFkKDEwKSAlPiUgCiAga2JsKCkgJT4lIAogIGthYmxlX3N0eWxpbmcoYm9vdHN0cmFwX29wdGlvbnMgPSAic3RyaXBlZCIsIAogICAgICAgICAgICAgICAgZnVsbF93aWR0aCA9IEYsIAogICAgICAgICAgICAgICAgcG9zaXRpb24gPSAibGVmdCIpIApgYGAKCiMjIE5hcnJvd2luZyBkb3duIG91ciBpbnRlcmVzdAoKSSBoYXZlIGp1c3QgcmVjZWl2ZWQgdGhlIGxhdGVzdCBub3RlcyBmcm9tIGNsYXNzOiB0aGUgaW50ZXJlc3Qgc2VlbXMgdG8gYmUgaW4gdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiB2ZXJzZSBhbmQgcHJvc2UgKmNyb3NzZWQgd2l0aCogYW4gaW50ZXJlc3QgaW4gY2hhcmFjdGVyLiBJIGludGVycHJldCB0aGlzIHRvIG1lYW4gdGhhdCB0aGVyZSBhcmUgY2hhcmFjdGVycyB0aGF0IGFwcGVhciBib3RoIGluIHZlcnNlIGFuZCBpbiBwcm9zZSBzZWN0aW9ucywgYW5kIHdlIDxtYXJrPndhbnQgdG8ga25vdyBob3cgdGhlIGxhbmd1YWdlIGFzc29jaWF0ZWQgd2l0aCBlYWNoIGNoYXJhY3RlciBkaWZmZXJzIGZyb20gdmVyc2UgdG8gcHJvc2UuPC9tYXJrPgoKSW4gdGhlIHRleHQgc2FtcGxlcyBJIGhhdmUsIGNoYXJhY3RlciBzcGVlY2ggaXMgbm90IG1hcmtlZC4gV2UgbWlnaHQgYmUgYmV0dGVyIG9mZiBpZiB3ZSBwdWxsICpUYW1pbmcgb2YgdGhlIFNocmV3KiBmcm9tIHd3dy5ndXRlbmJlcmcub3JnLgoKTHVja2lseSB0aGVyZSBpcyBhbiBSIG1vZHVsZSB0aGF0IGludGVyZmFjZXMgd2l0aCB0aGUgR3V0ZW5iZXJnIGFyY2hpdmVzLiBJdCBpcyBjYWxsZWQgYGd1dGVuYmVyZ3JgLiBJIHdpbGwgcHVsbCB0aGUgd2hvbGUgdGV4dCBmcm9tIHRoZXJlLiAKCmBgYHtyfQpzaGFrZXNwZWFyZSA8LSAKICBndXRlbmJlcmdfd29ya3MoYXV0aG9yID09ICJTaGFrZXNwZWFyZSwgV2lsbGlhbSIpIAoKc2hha2VzcGVhcmUgICAgICAgICAgICAgICAgICAgICU+JSAKICBtdXRhdGUoZW50cnkgPSByb3dfbnVtYmVyKCkpICU+JSAKICBzZWxlY3QoZW50cnksIHRpdGxlKSAgJT4lIAogIGtibCgpICU+JSAKICBrYWJsZV9zdHlsaW5nKGJvb3RzdHJhcF9vcHRpb25zID0gInN0cmlwZWQiLCAKICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGLCAKICAgICAgICAgICAgICAgIHBvc2l0aW9uID0gImxlZnQiKSAKYGBgCgpTbyBvdXIgdGV4dCBpcyB0aGVyZSBhbmQgYXZhaWxhYmxlLCBhdCBpbmRleCBuby4gMTAuIAoKYGBge3J9CklEcyA8LSAgc2hha2VzcGVhcmVbYygxMCksXSRndXRlbmJlcmdfaWQKCnNoYWtlc3BlYXJlICU+JSAKICBmaWx0ZXIoZ3V0ZW5iZXJnX2lkICVpbiUgSURzKSAlPiUgCiAgc2VsZWN0KGd1dGVuYmVyZ19pZCwgdGl0bGUpCmBgYAoKTGV0J3MgZG93bmxvYWQgdGhlIHBsYXkgYW5kIHN0b3JlIGl0IGluIGFuIFIgb2JqZWN0LiBJIHdpbGwgY2FsbCBpdCBgcGxheXNgIChwbHVyYWwgaW4gY2FzZSB3ZSBhZGQgbW9yZSB0ZXh0cyBvciBzb21ldGhpbmcuKQoKYGBge3J9CnBsYXlzIDwtIGd1dGVuYmVyZ19kb3dubG9hZChJRHMsIG1ldGFfZmllbGRzID0gInRpdGxlIikKCnBsYXlzICU+JSBhc190aWJibGUoKQpgYGAKCkknbGwgY29udmVydCB0aGUgZGF0YSB0byBvbmUtd29yZC1wZXIgcm93IG5vdy4gSXQncyB0aGUgZm9ybWF0IHdlIG5lZWQgZm9yIGFueSBvZiB0aGVzZSBhbmFseXNlcy4KCmBgYHtyfQpzZW50aW1lbnRzIDwtIHBsYXlzICU+JQogICNncm91cF9ieSh0aXRsZSkgJT4lCiAgbXV0YXRlKGxpbmUgPSByb3dfbnVtYmVyKCkpICU+JSAKICB1bm5lc3RfdG9rZW5zKHdvcmQsIHRleHQsCiAgICAgICAgICAgICAgICB0b19sb3dlciA9IEYpIAoKc2VudGltZW50cyAlPiUgCiAgc2xpY2UoMTUwOjE5MCkgJT4lIAogIGtibCgpICU+JSAKICBrYWJsZV9zdHlsaW5nKGJvb3RzdHJhcF9vcHRpb25zID0gInN0cmlwZWQiLCAKICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGLCAKICAgICAgICAgICAgICAgIHBvc2l0aW9uID0gImxlZnQiKSAKYGBgCgoKV2l0aCBteSB3ZWxsLXRyYWluZWQgZXllLCBJIG5vdGljZSB0aGF0ICJjaGFyYWN0ZXIgbmFtZXMgZGVzaWduYXRpbmcgd2hvJ3Mgc3BlYWtpbmciIGFyZSBhbGwgc2V0IGluIGFsbC1jYXBzLiBHaXZlbiB0aGlzIG1hdGVyaWFsIHByb3BlcnR5LCB3ZSBjYW4gaW5zZXJ0IGEgY29sdW1uIGludG8gdGhlIGRhdGEgdGhhdCBzdGF0ZXMsIGZvciBlYWNoIHdvcmQsIHdobyBpcyBzcGVha2luZyBpdC4gCgpgYGB7cn0KZm9yIChpIGluICgxOm5yb3coc2VudGltZW50cykpKXsKICBteXdvcmQgPSBzZW50aW1lbnRzW2ksXSAlPiUgcHVsbCh3b3JkKQogIGlmIChteXdvcmQgPT0gdG91cHBlcihteXdvcmQpKXsKICAgIHNwZWFrZXIgPSBteXdvcmQKICB9CiAgc2VudGltZW50cyRzcGVha2VyW2ldID0gc3BlYWtlcgp9CgpzZW50aW1lbnRzICU+JSAKICBzbGljZSgyMDA6NDAwKSAlPiUgCiAga2FibGUoKQoKCmBgYAoKCgo=</div>
 
 
 
