@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE,
 ## What you will find here
 
 - the [Rmd notebook file](text_analysis_notebook.nb.html) with script from my guest lecture
-- a [nice html view of the Rmd hotebook](text_analysis_notebook.html)
+- a [nice html view of the Rmd hotebook](text_analysis_notebook.nb.html)
 - [data file 1](Prose and Verse from Shrew.docx)
 - [data file 2](prose and verse csv 500 words.docx)
 
