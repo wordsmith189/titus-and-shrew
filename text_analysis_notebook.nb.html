@@ -1949,9 +1949,14 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYgKCFyZXF1aXJlKHBhY21hbikpIGluc3RhbGwucGFja2FnZXMoXCJwYWNtYW5cIilcbmxpYnJhcnkocGFjbWFuKVxucF9sb2FkKHJpbywgdGlkeXZlcnNlLCB0aWR5dGV4dCwga25pdHIsIGZsZXh0YWJsZSxcbiAgICAgICBrYWJsZUV4dHJhLFxuICAgICAgIHRleHRyZWFkciwgZ3V0ZW5iZXJnciwgamFuaXRvcilcbmBgYCJ9 -->
-<pre class="r"><code>if (!require(pacman)) install.packages(&quot;pacman&quot;)
-library(pacman)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYgKCFyZXF1aXJlKHBhY21hbikpIGluc3RhbGwucGFja2FnZXMoXCJwYWNtYW5cIilcbmBgYCJ9 -->
+<pre class="r"><code>if (!require(pacman)) install.packages(&quot;pacman&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiVGhlcmUgd2VyZSA1MCBvciBtb3JlIHdhcm5pbmdzICh1c2Ugd2FybmluZ3MoKSB0byBzZWUgdGhlIGZpcnN0IDUwKVxuIn0= -->
+<pre><code>There were 50 or more warnings (use warnings() to see the first 50)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShwYWNtYW4pXG5wX2xvYWQocmlvLCB0aWR5dmVyc2UsIHRpZHl0ZXh0LCBrbml0ciwgZmxleHRhYmxlLFxuICAgICAgIGthYmxlRXh0cmEsXG4gICAgICAgdGV4dHJlYWRyLCBndXRlbmJlcmdyLCBqYW5pdG9yKVxuYGBgIn0= -->
+<pre class="r"><code>library(pacman)
 p_load(rio, tidyverse, tidytext, knitr, flextable,
        kableExtra,
        textreadr, gutenbergr, janitor)</code></pre>
@@ -1996,21 +2001,10 @@ f %&gt;% head(10)</code></pre>
 <p>Here it is, converted to tabular format.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZiA8LSBcbiAgZiAlPiUgXG4gIGVuZnJhbWUoKSAlPiUgXG4gIHNlbGVjdChsaW5lID0gMikgJT4lIFxuICBtdXRhdGUoZmlsZSA9IHRleHRmaWxlc1syXSlcbmYgJT4lIFxuICBoZWFkKDEwKSAlPiUgXG4gIGtibCgpICU+JSBcbiAga2FibGVfcGFwZXIoZnVsbF93aWR0aCA9IEYpXG5gYGAifQ== -->
-<pre class="r"><code>f &lt;- 
-  f %&gt;% 
-  enframe() %&gt;% 
-  select(line = 2) %&gt;% 
-  mutate(file = textfiles[2])
-f %&gt;% 
-  head(10) %&gt;% 
-  kbl() %&gt;% 
-  kable_paper(full_width = F)</code></pre>
-<!-- rnb-source-end -->
 
 <!-- rnb-htmlwidget-begin eyJkZXBlbmRlbmNpZXMiOlt7ImFsbF9maWxlcyI6dHJ1ZSwiYXR0YWNobWVudCI6W10sImhlYWQiOltdLCJtZXRhIjpbXSwibmFtZSI6ImpxdWVyeSIsInBhY2thZ2UiOltdLCJzY3JpcHQiOiJqcXVlcnkubWluLmpzIiwic3JjIjp7ImZpbGUiOiIvVXNlcnMvbGg5ODk2L0xpYnJhcnkvUi80LjAvbGlicmFyeS9ybWFya2Rvd24vcm1kL2gvanF1ZXJ5In0sInN0eWxlc2hlZXQiOltdLCJ2ZXJzaW9uIjoiMS4xMS4zIn0seyJhbGxfZmlsZXMiOnRydWUsImF0dGFjaG1lbnQiOltdLCJoZWFkIjpbXSwibWV0YSI6eyJ2aWV3cG9ydCI6IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xIn0sIm5hbWUiOiJib290c3RyYXAiLCJwYWNrYWdlIjpbXSwic2NyaXB0IjpbImpzL2Jvb3RzdHJhcC5taW4uanMiLCJzaGltL2h0bWw1c2hpdi5taW4uanMiLCJzaGltL3Jlc3BvbmQubWluLmpzIl0sInNyYyI6eyJmaWxlIjoiL1VzZXJzL2xoOTg5Ni9MaWJyYXJ5L1IvNC4wL2xpYnJhcnkvcm1hcmtkb3duL3JtZC9oL2Jvb3RzdHJhcCJ9LCJzdHlsZXNoZWV0IjoiY3NzL2Nvc21vLm1pbi5jc3MiLCJ2ZXJzaW9uIjoiMy4zLjUifSx7ImFsbF9maWxlcyI6dHJ1ZSwiYXR0YWNobWVudCI6W10sImhlYWQiOltdLCJtZXRhIjpbXSwibmFtZSI6ImtlUHJpbnQiLCJwYWNrYWdlIjpbXSwic2NyaXB0Ijoia2VQcmludC5qcyIsInNyYyI6eyJmaWxlIjoiL1VzZXJzL2xoOTg5Ni9MaWJyYXJ5L1IvNC4wL2xpYnJhcnkva2FibGVFeHRyYS9rZVByaW50LTAuMC4xIn0sInN0eWxlc2hlZXQiOltdLCJ2ZXJzaW9uIjoiMC4wLjEifSx7ImFsbF9maWxlcyI6dHJ1ZSwiYXR0YWNobWVudCI6W10sImhlYWQiOltdLCJtZXRhIjpbXSwibmFtZSI6ImxpZ2h0YWJsZSIsInBhY2thZ2UiOltdLCJzY3JpcHQiOltdLCJzcmMiOnsiZmlsZSI6Ii9Vc2Vycy9saDk4OTYvTGlicmFyeS9SLzQuMC9saWJyYXJ5L2thYmxlRXh0cmEvbGlnaHRhYmxlLTAuMC4xIn0sInN0eWxlc2hlZXQiOiJsaWdodGFibGUuY3NzIiwidmVyc2lvbiI6IjAuMC4xIn1dLCJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNoaW55LnRhZy5saXN0Il0sInNpemluZ1BvbGljeSI6W119fQ== -->
 
-<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<table class="table table-striped" style="width: auto !important; ">
  <thead>
   <tr>
    <th style="text-align:left;"> line </th>
@@ -2068,7 +2062,7 @@ f %&gt;%
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGV4dCBBbmFseXNpcyBOb3RlYm9vayIKYXV0aG9yOiBMYXJzIEhpbnJpY2hzCmRhdGU6IDE0LU9jdC0yMDIwCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyIHNldHVwfQppZiAoIXJlcXVpcmUocGFjbWFuKSkgaW5zdGFsbC5wYWNrYWdlcygicGFjbWFuIikKbGlicmFyeShwYWNtYW4pCnBfbG9hZChyaW8sIHRpZHl2ZXJzZSwgdGlkeXRleHQsIGtuaXRyLCBmbGV4dGFibGUsCiAgICAgICBrYWJsZUV4dHJhLAogICAgICAgdGV4dHJlYWRyLCBndXRlbmJlcmdyLCBqYW5pdG9yKQpgYGAKCiMjIFN0YXJ0IGJ5IGxvYWRpbmcgb3VyIGRhdGEKCkZpcnN0IHdlJ2xsIGdldCBhbiBpbnZlbnRvcnkgb2YgYWxsIHRoZSAuRE9DWCBmaWxlcyBpbiBvdXIgcHJvamVjdCBkaXJlY3RvcnkuCgpgYGB7cn0KKHRleHRmaWxlcyA8LSBsaXN0LmZpbGVzKHBhdHRlcm4gPSAiLmRvY3giKSkKYGBgCgpUaGUgc2Vjb25kIGZpbGUgaGFzIG1vcmUgZm9ybWF0dGluZyBhbmQgbWF5LCBmb3IgdGhlIHRpbWUgYmVpbmcsIGJlIG1vcmUgdXNlZnVsLiBXZSdsbCByZWFkIGl0IGluLiBIZXJlIGlzIHRoZSB0b3Agb2YgaXRzIGNvbnRlbnQuCgpgYGB7cn0KZiA8LSByZWFkX2RvY3godGV4dGZpbGVzWzJdKQpmICU+JSBoZWFkKDEwKQpgYGAKCkhlcmUgaXQgaXMsIGNvbnZlcnRlZCB0byB0YWJ1bGFyIGZvcm1hdC4KCmBgYHtyfQpmIDwtIAogIGYgJT4lIAogIGVuZnJhbWUoKSAlPiUgCiAgc2VsZWN0KGxpbmUgPSAyKSAlPiUgCiAgbXV0YXRlKGZpbGUgPSB0ZXh0ZmlsZXNbMl0pCmYgJT4lIAogIGhlYWQoMTApICU+JSAKICBrYmwoKSAlPiUgCiAga2FibGVfcGFwZXIoZnVsbF93aWR0aCA9IEYpCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGV4dCBBbmFseXNpcyBOb3RlYm9vayIKYXV0aG9yOiBMYXJzIEhpbnJpY2hzCmRhdGU6IDE0LU9jdC0yMDIwCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyIHNldHVwfQppZiAoIXJlcXVpcmUocGFjbWFuKSkgaW5zdGFsbC5wYWNrYWdlcygicGFjbWFuIikKbGlicmFyeShwYWNtYW4pCnBfbG9hZChyaW8sIHRpZHl2ZXJzZSwgdGlkeXRleHQsIGtuaXRyLCBmbGV4dGFibGUsCiAgICAgICBrYWJsZUV4dHJhLAogICAgICAgdGV4dHJlYWRyLCBndXRlbmJlcmdyLCBqYW5pdG9yKQpgYGAKCiMjIFN0YXJ0IGJ5IGxvYWRpbmcgb3VyIGRhdGEKCkZpcnN0IHdlJ2xsIGdldCBhbiBpbnZlbnRvcnkgb2YgYWxsIHRoZSAuRE9DWCBmaWxlcyBpbiBvdXIgcHJvamVjdCBkaXJlY3RvcnkuCgpgYGB7cn0KKHRleHRmaWxlcyA8LSBsaXN0LmZpbGVzKHBhdHRlcm4gPSAiLmRvY3giKSkKYGBgCgpUaGUgc2Vjb25kIGZpbGUgaGFzIG1vcmUgZm9ybWF0dGluZyBhbmQgbWF5LCBmb3IgdGhlIHRpbWUgYmVpbmcsIGJlIG1vcmUgdXNlZnVsLiBXZSdsbCByZWFkIGl0IGluLiBIZXJlIGlzIHRoZSB0b3Agb2YgaXRzIGNvbnRlbnQuCgpgYGB7cn0KZiA8LSByZWFkX2RvY3godGV4dGZpbGVzWzJdKQpmICU+JSBoZWFkKDEwKQpgYGAKCkhlcmUgaXQgaXMsIGNvbnZlcnRlZCB0byB0YWJ1bGFyIGZvcm1hdC4KCmBgYHtyfQpmIDwtIAogIGYgJT4lIAogIGVuZnJhbWUoKSAlPiUgCiAgc2VsZWN0KGxpbmUgPSAyKSAlPiUgCiAgbXV0YXRlKGZpbGUgPSB0ZXh0ZmlsZXNbMl0pCmYgJT4lIAogIGhlYWQoMTApICU+JSAKICBrYmwoKSAlPiUgCiAga2FibGVfc3R5bGluZyhib290c3RyYXBfb3B0aW9ucyA9ICJzdHJpcGVkIiwgCiAgICAgICAgICAgICAgICBmdWxsX3dpZHRoID0gRiwgCiAgICAgICAgICAgICAgICBwb3NpdGlvbiA9ICJsZWZ0IikgCmBgYAoK</div>
 
 
 
