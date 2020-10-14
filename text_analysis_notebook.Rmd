@@ -11,6 +11,7 @@ library(pacman)
 p_load(rio, tidyverse, tidytext, knitr, flextable,
        kableExtra,
        textreadr, gutenbergr, janitor)
+opts_chunk$set(cache = TRUE)
 ```
 
 ## Digital text analysis: a look at the toolbox 
@@ -133,25 +134,65 @@ sentiments %>%
 
 With my well-trained eye, I notice that "character names designating who's speaking" are all set in all-caps. Given this material property, we can insert a column into the data that states, for each word, who is speaking it. 
 
-```{r}
-sentiments <- 
+```{r warning=F, eval=FALSE}
+play_with_speaker <- 
   sentiments %>% 
-  mutate(speaker = "nobody")
+  mutate(speaker = NA)
 
-for (i in (1:nrow(sentiments))){
-  myword = sentiments[i,] %>% pull(word)
+two_word_name <- FALSE
+
+speakername <- NA
+
+for (i in (1:nrow(play_with_speaker))){
+  
+  # define the word that this loop looks at
+  myword = play_with_speaker[i,] %>% 
+    pull(word)
+  
+  # check whether word is identitcal to its all-caps conversion
+  # if yes, then set it as speaker name
   if (myword == toupper(myword) & nchar(myword) > 1){
-    speaker = myword
+    speakername = myword
   }
-  sentiments$speaker[i] = speaker
+  
+  # write speaker name in speaker column
+  play_with_speaker$speaker[i] = speakername
+  cat("\014", i, "of", nrow(play_with_speaker))
 }
+cat("\014")
+```
 
-sentiments %>% 
+We'll export the dataset we've created so that next time the chunk won't need to run. We'll only need to import the data then.
+
+```{r eval=FALSE}
+play_with_speaker %>% 
+  export("play_with_speaker.csv")
+```
+
+```{r}
+play_with_speaker <- 
+  import("play_with_speaker.csv")
+```
+
+Let's get a printout of the number of words spoken by each character.
+
+```{r}
+play_with_speaker %>% 
+  count(speaker) %>% 
+  arrange(desc(n)) %>% 
+  filter(n > 25) %>% 
+  kbl(position = "left",
+      caption = "Words per character (showing only those with more than 25)") %>% 
+  kable_paper(full_width = FALSE)
+```
+
+
+
+```{r}
+play_with_speaker %>% 
   slice(200:400) %>% 
-  kbl() %>% 
-  kable_styling()
-
-
+  kbl(position = "left") %>% 
+  kable_styling(full_width = F)
 ```
 
 
